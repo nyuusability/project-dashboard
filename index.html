@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Project Dashboard</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css"/>
+<style>
+:root {
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f5f4f0;
+  --color-background-tertiary: #edecea;
+  --color-text-primary: #1a1916;
+  --color-text-secondary: #6b6a66;
+  --color-text-tertiary: #9b9a97;
+  --color-border-tertiary: rgba(26,25,22,0.12);
+  --color-border-secondary: rgba(26,25,22,0.22);
+  --color-border-primary: rgba(26,25,22,0.35);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background-primary: #1e1e1c;
+    --color-background-secondary: #2a2a27;
+    --color-background-tertiary: #141412;
+    --color-text-primary: #f0ede8;
+    --color-text-secondary: #9b9a97;
+    --color-text-tertiary: #6b6a66;
+    --color-border-tertiary: rgba(240,237,232,0.1);
+    --color-border-secondary: rgba(240,237,232,0.2);
+    --color-border-primary: rgba(240,237,232,0.32);
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);font-size:14px;color:var(--color-text-primary);background:var(--color-background-tertiary);min-height:100vh}
+.shell{max-width:1100px;margin:24px auto;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.app{display:flex;flex-direction:column;min-height:600px}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:0.5px solid var(--color-border-tertiary);gap:8px;flex-wrap:wrap;background:var(--color-background-primary)}
+.topbar-left{display:flex;align-items:center;gap:8px}
+.topbar-right{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.app-title{font-size:15px;font-weight:500}
+.btn{background:transparent;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:5px 10px;font-size:12px;cursor:pointer;color:var(--color-text-primary);transition:background .15s;white-space:nowrap;font-family:var(--font-sans)}
+.btn:hover{background:var(--color-background-secondary)}
+.btn.active{background:var(--color-background-secondary);border-color:var(--color-border-primary);font-weight:500}
+.btn-primary{background:var(--color-background-secondary);border:0.5px solid var(--color-border-primary)}
+.btn-danger{color:#A32D2D;border-color:#F7C1C1}
+.btn-danger:hover{background:#FCEBEB}
+.tab-bar{display:flex;align-items:stretch;border-bottom:0.5px solid var(--color-border-tertiary);padding:0 16px;gap:2px;overflow-x:auto;background:var(--color-background-primary)}
+.tab{padding:8px 12px;font-size:12px;cursor:pointer;border-bottom:2px solid transparent;color:var(--color-text-secondary);white-space:nowrap;display:flex;align-items:center;gap:6px;user-select:none}
+.tab:hover{color:var(--color-text-primary)}
+.tab.active{color:var(--color-text-primary);border-bottom-color:var(--color-text-primary);font-weight:500}
+.tab-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.tab-sep{width:0.5px;background:var(--color-border-tertiary);margin:6px 4px;align-self:stretch}
+.tab-add{padding:8px 10px;cursor:pointer;color:var(--color-text-tertiary);display:flex;align-items:center;font-size:18px}
+.tab-add:hover{color:var(--color-text-primary)}
+.content{flex:1;overflow:hidden;background:var(--color-background-primary)}
+
+/* Gantt */
+.gantt-wrap{overflow-x:auto;max-height:500px;overflow-y:auto}
+.gantt{min-width:860px}
+.gantt-header{display:flex;position:sticky;top:0;background:var(--color-background-primary);z-index:10;border-bottom:0.5px solid var(--color-border-tertiary)}
+.gantt-label-col{width:180px;min-width:180px;padding:8px 12px;font-size:11px;color:var(--color-text-secondary);font-weight:500;border-right:0.5px solid var(--color-border-tertiary)}
+.gantt-months{display:flex;flex:1}
+.gantt-month{flex:0 0 auto;font-size:11px;color:var(--color-text-secondary);padding:8px 4px;border-right:0.5px solid var(--color-border-tertiary);text-align:center;overflow:hidden;white-space:nowrap}
+.gantt-row{display:flex;border-bottom:0.5px solid var(--color-border-tertiary);min-height:48px;cursor:pointer}
+.gantt-row:hover .gantt-label{background:var(--color-background-secondary)}
+.gantt-label{width:180px;min-width:180px;padding:8px 12px;border-right:0.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px;transition:background .15s}
+.proj-color-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.gantt-label-text{display:flex;flex-direction:column;gap:2px;overflow:hidden}
+.gantt-label-name{font-weight:500;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gantt-label-sub{font-size:11px;color:var(--color-text-secondary)}
+.gantt-bars{flex:1;position:relative}
+.gantt-bar{position:absolute;height:20px;border-radius:3px;top:50%;transform:translateY(-50%);display:flex;align-items:center;padding:0 5px;font-size:10px;font-weight:500;white-space:nowrap;overflow:hidden;cursor:pointer}
+.gantt-bar:hover{opacity:.8}
+.gantt-grid-line{position:absolute;top:0;bottom:0;width:0.5px;background:var(--color-border-tertiary);pointer-events:none}
+.gantt-today-line{position:absolute;top:0;bottom:0;width:2px;background:#E24B4A;pointer-events:none;z-index:5}
+.phase-legend{display:flex;flex-wrap:wrap;gap:8px;padding:8px 16px;border-top:0.5px solid var(--color-border-tertiary);align-items:center}
+.legend-item{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--color-text-secondary)}
+.legend-swatch{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+
+/* Project tab */
+.project-view{padding:16px;display:flex;flex-direction:column;gap:14px;overflow-y:auto;max-height:580px}
+.project-title-input{font-size:17px;font-weight:500;border:none;background:transparent;color:var(--color-text-primary);outline:none;padding:3px 0;border-bottom:1.5px solid transparent;transition:border-color .15s;flex:1;font-family:var(--font-sans)}
+.project-title-input:focus{border-bottom-color:var(--color-border-primary)}
+.section-label{font-size:11px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px}
+.phases-table{width:100%;border-collapse:collapse;table-layout:fixed}
+.phases-table th{font-size:11px;color:var(--color-text-secondary);font-weight:400;text-align:left;padding:5px 8px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.phases-table td{padding:6px 8px;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px}
+.phases-table tr:last-child td{border-bottom:none}
+.phase-name-cell{display:flex;align-items:center;gap:7px}
+.date-input{background:transparent;border:none;color:var(--color-text-primary);font-size:12px;cursor:pointer;padding:2px 3px;border-radius:4px;font-family:var(--font-sans);width:100%}
+.date-input:focus{outline:none;background:var(--color-background-secondary)}
+.notes-input{width:100%;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:8px 10px;font-size:12px;background:transparent;color:var(--color-text-primary);resize:vertical;font-family:var(--font-sans);min-height:64px}
+.notes-input:focus{outline:none;border-color:var(--color-border-primary)}
+
+/* Capacity */
+.capacity-view{padding:16px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;max-height:520px}
+.cap-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 14px}
+.cap-month-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.cap-month-label{font-size:12px;font-weight:500}
+.cap-quarter-badge{font-size:10px;color:var(--color-text-secondary);background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:10px;padding:2px 7px}
+.cap-bar-track{height:14px;border-radius:3px;background:var(--color-border-tertiary);overflow:hidden}
+.cap-bar-fill{height:100%;border-radius:3px;transition:width .4s}
+.cap-bar-fill.ok{background:#1D9E75}
+.cap-bar-fill.warn{background:#BA7517}
+.cap-bar-fill.over{background:#E24B4A}
+.cap-meta{display:flex;justify-content:space-between;margin-top:4px}
+.cap-meta span{font-size:11px;color:var(--color-text-secondary)}
+
+/* Fit finder */
+.fit-view{padding:16px;display:flex;flex-direction:column;gap:14px;overflow-y:auto;max-height:520px}
+.fit-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px}
+.fit-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.form-group{display:flex;flex-direction:column;gap:4px}
+.form-label{font-size:11px;color:var(--color-text-secondary)}
+.form-input{border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:6px 8px;font-size:12px;background:transparent;color:var(--color-text-primary);font-family:var(--font-sans)}
+.form-input:focus{outline:none;border-color:var(--color-border-primary)}
+.fit-results{display:flex;flex-direction:column;gap:8px}
+.fit-slot{border-radius:var(--border-radius-md);padding:10px 12px;border:0.5px solid var(--color-border-tertiary)}
+.fit-slot.good{border-color:#5DCAA5;background:#E1F5EE}
+.fit-slot.tight{border-color:#EF9F27;background:#FAEEDA}
+.fit-slot.none{border-color:#F09595;background:#FCEBEB}
+.fit-slot-title{font-size:12px;font-weight:500;margin-bottom:3px}
+.fit-slot.good .fit-slot-title{color:#085041}
+.fit-slot.tight .fit-slot-title{color:#633806}
+.fit-slot.none .fit-slot-title{color:#791F1F}
+.fit-slot-sub{font-size:11px}
+.fit-slot.good .fit-slot-sub{color:#0F6E56}
+.fit-slot.tight .fit-slot-sub{color:#854F0B}
+.fit-slot.none .fit-slot-sub{color:#A32D2D}
+
+/* Planner */
+.planner-view{padding:16px;display:flex;flex-direction:column;gap:14px;overflow-y:auto;max-height:580px}
+.planner-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px;display:flex;flex-direction:column;gap:12px}
+.planner-header{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
+.planner-header .form-group{flex:1;min-width:140px}
+.planner-phase-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.planner-phase-row:last-child{border-bottom:none}
+.planner-swatch{width:9px;height:9px;border-radius:2px;flex-shrink:0}
+.planner-phase-name{font-size:12px;flex:1;min-width:80px}
+.planner-dur{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--color-text-secondary)}
+.dur-input{background:transparent;border:0.5px solid var(--color-border-tertiary);border-radius:4px;color:var(--color-text-primary);font-size:12px;padding:2px 4px;width:48px;font-family:var(--font-sans);text-align:center}
+.dur-input:focus{outline:none;border-color:var(--color-border-primary)}
+.planner-dates{font-size:12px;color:var(--color-text-secondary);min-width:160px;text-align:right}
+.planner-dates.computed{color:var(--color-text-primary)}
+.warning-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:4px 10px;border-radius:var(--border-radius-md);background:#FAEEDA;color:#633806;border:0.5px solid #EF9F27}
+.success-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:4px 10px;border-radius:var(--border-radius-md);background:#E1F5EE;color:#085041;border:0.5px solid #5DCAA5}
+
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:200}
+.modal{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:20px;width:340px;display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 32px rgba(0,0,0,.18)}
+.modal h3{font-size:14px;font-weight:500}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end}
+.color-picker-row{display:flex;gap:8px;flex-wrap:wrap}
+.color-opt{width:22px;height:22px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .1s}
+.color-opt:hover,.color-opt.selected{transform:scale(1.2);border-color:var(--color-text-secondary)}
+
+/* Misc */
+.delete-btn{background:none;border:none;cursor:pointer;color:var(--color-text-tertiary);padding:2px 5px;border-radius:4px;font-size:15px;line-height:1;font-family:var(--font-sans)}
+.delete-btn:hover{color:#E24B4A;background:#FCEBEB}
+.row-del-btn{opacity:0}
+tr:hover .row-del-btn{opacity:1}
+.add-phase-btn{font-size:12px;color:var(--color-text-secondary);cursor:pointer;background:none;border:none;padding:4px 8px;border-radius:4px;display:inline-flex;align-items:center;gap:4px;font-family:var(--font-sans)}
+.add-phase-btn:hover{background:var(--color-background-secondary);color:var(--color-text-primary)}
+.divider{height:0.5px;background:var(--color-border-tertiary)}
+.gs-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--color-text-secondary);text-decoration:none;padding:4px 8px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md)}
+.gs-link:hover{background:var(--color-background-secondary)}
+.proj-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.proj-color-btn{width:20px;height:20px;border-radius:50%;border:2px solid var(--color-border-secondary);cursor:pointer;flex-shrink:0;transition:transform .15s}
+.proj-color-btn:hover{transform:scale(1.15)}
+.inline-color-picker{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:10px;display:inline-flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.saved-toast{position:fixed;bottom:16px;right:16px;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:7px 14px;font-size:12px;color:var(--color-text-secondary);display:none;z-index:300;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.empty{padding:40px;text-align:center;color:var(--color-text-secondary);font-size:13px}
+select.form-input{cursor:pointer}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="app" id="app"></div>
+</div>
+<div class="saved-toast" id="savedToast">&#10003; Saved</div>
+
+<script>
+const PROJECT_COLORS=['#378ADD','#1D9E75','#D85A30','#7F77DD','#D4537E','#BA7517','#639922','#888780'];
+const PHASE_COLORS={
+  'Request':    {bg:'#E6F1FB',text:'#0C447C'},
+  'Planning':   {bg:'#EEEDFE',text:'#3C3489'},
+  'Recruitment':{bg:'#FAEEDA',text:'#633806'},
+  'Research':   {bg:'#E1F5EE',text:'#085041'},
+  'Analysis':   {bg:'#FAECE7',text:'#712B13'},
+  'Reporting':  {bg:'#FBEAF0',text:'#72243E'}
+};
+const POOL=[{bg:'#E6F1FB',text:'#0C447C'},{bg:'#EEEDFE',text:'#3C3489'},{bg:'#FAEEDA',text:'#633806'},{bg:'#E1F5EE',text:'#085041'},{bg:'#FAECE7',text:'#712B13'},{bg:'#FBEAF0',text:'#72243E'}];
+const DEFAULT_PHASE_DURATIONS={Request:3,Planning:5,Recruitment:7,Research:10,Analysis:5,Reporting:5};
+const DEFAULT_PHASES=['Request','Planning','Recruitment','Research','Analysis','Reporting'];
+const GS_URL='https://docs.google.com/spreadsheets/d/1NNseu9ZcaMTh65kSLlTuNe7DlIc9qj6VfBwUeYomDPc/edit';
+const STOR_KEY='proj_dash_v3';
+
+function phaseColor(name,idx){return PHASE_COLORS[name]||POOL[idx%POOL.length];}
+function today(){return new Date().toISOString().split('T')[0];}
+function subDays(d,n){let dt=new Date(d);dt.setDate(dt.getDate()-n);return dt.toISOString().split('T')[0];}
+function durDays(s,e){if(!s||!e)return 0;return Math.round((new Date(e)-new Date(s))/86400000);}
+function fmtDate(d){if(!d)return'';let[y,m,day]=d.split('-');return['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]+' '+parseInt(day);}
+function fmtFull(d){if(!d)return'';let[y,m,day]=d.split('-');return['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]+' '+parseInt(day)+', '+y;}
+function monthsBetween(s,e){let months=[],cur=new Date(new Date(s).getFullYear(),new Date(s).getMonth(),1),end=new Date(e);while(cur<=end){months.push({year:cur.getFullYear(),month:cur.getMonth()});cur.setMonth(cur.getMonth()+1);}return months;}
+function fiscalQ(ds){let d=new Date(ds),m=d.getMonth(),fy=d.getFullYear();if(m>=8)return{q:1,fy:fy+1};if(m<=1)return{q:2,fy};if(m<=4)return{q:3,fy};return{q:4,fy};}
+
+function saveState(){
+  try{localStorage.setItem(STOR_KEY,JSON.stringify(state));}catch(e){}
+  let t=document.getElementById('savedToast');
+  if(t){t.style.display='flex';clearTimeout(t._tid);t._tid=setTimeout(()=>{t.style.display='none';},1500);}
+}
+
+function loadState(){
+  try{let s=localStorage.getItem(STOR_KEY);if(s)return JSON.parse(s);}catch(e){}
+  return null;
+}
+
+const SAMPLE_PROJECTS=[
+  {id:1,name:'Market Research Study',status:'active',color:'#378ADD',notes:'Ongoing consumer insights project for Q4 product launch.',
+   phases:[{name:'Request',start:'2026-05-01',end:'2026-05-10'},{name:'Planning',start:'2026-05-11',end:'2026-05-25'},{name:'Recruitment',start:'2026-05-26',end:'2026-06-15'},{name:'Research',start:'2026-06-16',end:'2026-07-31'},{name:'Analysis',start:'2026-08-01',end:'2026-08-20'},{name:'Reporting',start:'2026-08-21',end:'2026-09-05'}]},
+  {id:2,name:'Brand Perception Survey',status:'planned',color:'#1D9E75',notes:'Annual brand tracker. Awaiting budget approval.',
+   phases:[{name:'Request',start:'2026-06-20',end:'2026-06-30'},{name:'Planning',start:'2026-07-01',end:'2026-07-20'},{name:'Recruitment',start:'2026-07-21',end:'2026-08-10'},{name:'Research',start:'2026-08-11',end:'2026-09-15'},{name:'Analysis',start:'2026-09-16',end:'2026-10-01'},{name:'Reporting',start:'2026-10-02',end:'2026-10-20'}]},
+  {id:3,name:'UX Usability Testing',status:'active',color:'#D85A30',notes:'Moderated usability sessions for new checkout flow.',
+   phases:[{name:'Request',start:'2026-06-01',end:'2026-06-05'},{name:'Planning',start:'2026-06-06',end:'2026-06-14'},{name:'Recruitment',start:'2026-06-15',end:'2026-06-28'},{name:'Research',start:'2026-06-29',end:'2026-07-15'},{name:'Analysis',start:'2026-07-16',end:'2026-07-25'},{name:'Reporting',start:'2026-07-26',end:'2026-08-05'}]}
+];
+
+let state = loadState() || {
+  view:'gantt',timeRange:'monthly',activeProject:null,showNewProject:false,showColorPicker:null,
+  newProject:{name:'',status:'planned'},fitDays:35,fitStartAfter:today(),plannerNew:null,
+  projects: SAMPLE_PROJECTS
+};
+// ensure runtime-only fields exist
+state.showNewProject=false;state.showColorPicker=null;
+
+function computeBackwards(phases,deadline){
+  let rev=[...phases].reverse();
+  let cursor=deadline;
+  rev=rev.map(ph=>{
+    let dur=ph.defaultDays||DEFAULT_PHASE_DURATIONS[ph.name]||5;
+    let end=cursor,start=subDays(end,dur-1);
+    cursor=subDays(start,1);
+    return{...ph,start,end};
+  });
+  return rev.reverse();
+}
+
+function getTimeWindow(){
+  let now=new Date(),r=state.timeRange;
+  if(r==='weekly'){let s=new Date(now);s.setDate(now.getDate()-now.getDay()-7);let e=new Date(s);e.setDate(s.getDate()+41);return{start:s.toISOString().split('T')[0],end:e.toISOString().split('T')[0]};}
+  if(r==='monthly'){let s=new Date(now.getFullYear(),now.getMonth()-1,1);let e=new Date(now.getFullYear(),now.getMonth()+5,0);return{start:s.toISOString().split('T')[0],end:e.toISOString().split('T')[0]};}
+  let fq=fiscalQ(now.toISOString().split('T')[0]),qs,qe;
+  if(fq.q===1){qs=new Date(fq.fy-1,8,1);qe=new Date(fq.fy,5,30);}
+  else if(fq.q===2){qs=new Date(fq.fy-1,11,1);qe=new Date(fq.fy,8,30);}
+  else if(fq.q===3){qs=new Date(fq.fy,2,1);qe=new Date(fq.fy,11,31);}
+  else{qs=new Date(fq.fy,5,1);qe=new Date(fq.fy+1,5,30);}
+  return{start:qs.toISOString().split('T')[0],end:qe.toISOString().split('T')[0]};
+}
+
+function expandedWindow(){
+  let tw=getTimeWindow(),dates=[];
+  state.projects.forEach(p=>p.phases.forEach(ph=>{if(ph.start)dates.push(ph.start);if(ph.end)dates.push(ph.end);}));
+  if(!dates.length)return tw;
+  dates.sort();
+  return{start:tw.start<dates[0]?tw.start:dates[0],end:tw.end>dates[dates.length-1]?tw.end:dates[dates.length-1]};
+}
+
+function renderGantt(){
+  let win=expandedWindow(),startD=new Date(win.start),endD=new Date(win.end),range=Math.max(1,endD-startD);
+  let months=monthsBetween(win.start,win.end);
+  function pct(d){if(!d)return 0;return Math.max(0,Math.min(100,(new Date(d)-startD)/range*100));}
+  let todayPct=pct(today());
+  let monthCols=months.map(m=>{
+    let ms=new Date(m.year,m.month,1),me=new Date(m.year,m.month+1,0);
+    if(me>endD)me=endD;if(ms<startD)ms=startD;
+    let w=Math.max(0,(me-ms)/range*100);
+    return`<div class="gantt-month" style="width:${w}%;min-width:${w}%">${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][m.month]} ${m.year}</div>`;
+  }).join('');
+  let rows=state.projects.map(p=>{
+    let bars=p.phases.map((ph,i)=>{
+      if(!ph.start||!ph.end)return'';
+      let l=pct(ph.start),r=pct(ph.end),w=Math.max(0.4,r-l);
+      let c=phaseColor(ph.name,i);
+      return`<div class="gantt-bar" style="left:${l}%;width:${w}%;background:${c.bg};color:${c.text}" title="${ph.name}: ${fmtDate(ph.start)} – ${fmtDate(ph.end)}">${ph.name}</div>`;
+    }).join('');
+    let grid=months.map(m=>{let lp=(new Date(m.year,m.month,1)-startD)/range*100;return lp>0&&lp<100?`<div class="gantt-grid-line" style="left:${lp}%"></div>`:''}).join('');
+    return`<div class="gantt-row" onclick="selectProject(${p.id})">
+      <div class="gantt-label"><div class="proj-color-dot" style="background:${p.color||'#888'}"></div><div class="gantt-label-text"><div class="gantt-label-name">${esc(p.name)}</div><div class="gantt-label-sub">${p.phases.filter(ph=>ph.start&&ph.end).length} phases set</div></div></div>
+      <div class="gantt-bars" style="position:relative;min-height:48px">${grid}${bars}<div class="gantt-today-line" style="left:${todayPct}%" title="Today"></div></div>
+    </div>`;
+  }).join('');
+  let phasesUsed=[...new Set(state.projects.flatMap(p=>p.phases.map(ph=>ph.name)))];
+  return`<div class="gantt-wrap"><div class="gantt">
+    <div class="gantt-header"><div class="gantt-label-col">Project</div><div class="gantt-months">${monthCols}</div></div>
+    ${rows||'<div class="empty">No projects yet. Click + to add one.</div>'}
+  </div></div>
+  <div class="phase-legend">
+    <span style="font-size:11px;color:var(--color-text-secondary);margin-right:4px">Projects:</span>
+    ${state.projects.map(p=>`<span class="legend-item"><span class="legend-swatch" style="border-radius:50%;background:${p.color||'#888'}"></span>${esc(p.name)}</span>`).join('')}
+    <span style="width:0.5px;height:14px;background:var(--color-border-tertiary);margin:0 6px"></span>
+    <span style="font-size:11px;color:var(--color-text-secondary);margin-right:4px">Phases:</span>
+    ${phasesUsed.map((n,i)=>{let c=phaseColor(n,i);return`<span class="legend-item"><span class="legend-swatch" style="background:${c.bg};border:1px solid ${c.text}40"></span>${n}</span>`;}).join('')}
+    <span style="margin-left:auto;display:flex;align-items:center;gap:4px;font-size:11px;color:#E24B4A"><span style="display:inline-block;width:2px;height:12px;background:#E24B4A;border-radius:1px"></span>Today</span>
+  </div>`;
+}
+
+function renderCapacity(){
+  let win=getTimeWindow(),months=monthsBetween(win.start,win.end);
+  let rows=months.map(m=>{
+    let mStart=new Date(m.year,m.month,1),mEnd=new Date(m.year,m.month+1,0),total=mEnd.getDate(),busy=new Set();
+    state.projects.forEach(p=>p.phases.forEach(ph=>{
+      if(!ph.start||!ph.end)return;
+      let ps=new Date(ph.start),pe=new Date(ph.end);
+      for(let d=new Date(mStart);d<=mEnd;d.setDate(d.getDate()+1)){if(d>=ps&&d<=pe)busy.add(d.toISOString().split('T')[0]);}
+    }));
+    let pct=Math.min(100,Math.round(busy.size/total*100)),cls=pct>85?'over':pct>60?'warn':'ok';
+    let mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][m.month];
+    let fq=fiscalQ(mStart.toISOString().split('T')[0]);
+    return`<div class="cap-card"><div class="cap-month-row"><span class="cap-month-label">${mo} ${m.year}</span><span class="cap-quarter-badge">FY${fq.fy} Q${fq.q}</span></div><div class="cap-bar-track"><div class="cap-bar-fill ${cls}" style="width:${pct}%"></div></div><div class="cap-meta"><span>${pct}% used</span><span style="color:${cls==='over'?'#A32D2D':cls==='warn'?'#854F0B':'#0F6E56'}">${total-busy.size} days free</span></div></div>`;
+  }).join('');
+  return`<div class="capacity-view">${rows}</div>`;
+}
+
+function renderFit(){
+  let dn=parseInt(state.fitDays)||35,sa=state.fitStartAfter||today();
+  let horizon=new Date(sa);horizon.setMonth(horizon.getMonth()+12);
+  let allBusy=new Set();
+  state.projects.forEach(p=>p.phases.forEach(ph=>{
+    if(!ph.start||!ph.end)return;
+    let ps=new Date(ph.start),pe=new Date(ph.end),saD=new Date(sa);
+    for(let d=new Date(ps>saD?ps:saD);d<=pe&&d<=horizon;d.setDate(d.getDate()+1))allBusy.add(d.toISOString().split('T')[0]);
+  }));
+  let windows=[],cur=new Date(sa),wStart=null,wDays=0;
+  for(let i=0;i<365;i++){
+    let ds=cur.toISOString().split('T')[0];
+    if(!allBusy.has(ds)){if(!wStart)wStart=ds;wDays++;}
+    else{if(wStart&&wDays>0){let e2=new Date(cur);e2.setDate(e2.getDate()-1);windows.push({start:wStart,end:e2.toISOString().split('T')[0],days:wDays});}wStart=null;wDays=0;}
+    cur.setDate(cur.getDate()+1);
+  }
+  if(wStart&&wDays>0){let e2=new Date(cur);e2.setDate(e2.getDate()-1);windows.push({start:wStart,end:e2.toISOString().split('T')[0],days:wDays});}
+  let slots=windows.filter(w=>w.days>=Math.max(1,dn*0.5)).slice(0,8);
+  let slotHTML=slots.length?slots.map(w=>{
+    let fits=w.days>=dn,tight=!fits&&w.days>=dn*0.7,cls=fits?'good':tight?'tight':'none',lbl=fits?'Fits comfortably':tight?'Tight fit':'Too short';
+    return`<div class="fit-slot ${cls}"><div class="fit-slot-title">${fmtFull(w.start)} – ${fmtFull(w.end)}</div><div class="fit-slot-sub">${w.days} free days &middot; ${lbl}</div></div>`;
+  }).join(''):`<div class="fit-slot none"><div class="fit-slot-title">No windows found</div><div class="fit-slot-sub">No open slots of ${Math.round(dn*0.5)}+ days in the next 12 months.</div></div>`;
+  return`<div class="fit-view">
+    <div class="fit-card"><div class="section-label" style="margin-bottom:10px">Project fit calculator</div>
+      <div class="fit-controls">
+        <div class="form-group"><label class="form-label">Duration needed (days)</label><input class="form-input" type="number" min="1" max="365" value="${dn}" oninput="state.fitDays=this.value;render()"/></div>
+        <div class="form-group"><label class="form-label">Start no earlier than</label><input class="form-input" type="date" value="${sa}" onchange="state.fitStartAfter=this.value;render()"/></div>
+      </div>
+    </div>
+    <div><div class="section-label" style="margin-bottom:8px">Available windows</div><div class="fit-results">${slotHTML}</div></div>
+  </div>`;
+}
+
+function renderPlanner(){
+  if(!state.plannerNew){
+    state.plannerNew={deadline:'',projectName:'New Project',color:PROJECT_COLORS[state.projects.length%PROJECT_COLORS.length],phases:DEFAULT_PHASES.map(n=>({name:n,defaultDays:DEFAULT_PHASE_DURATIONS[n]||5}))};
+  }
+  let np=state.plannerNew,dl=np.deadline;
+  let computed=dl?computeBackwards(np.phases,dl):[];
+  let totalDays=np.phases.reduce((s,ph)=>s+(parseInt(ph.defaultDays)||5),0);
+  let startDate=computed[0]?.start||'';
+  let isInPast=startDate&&startDate<today();
+  let colorOpts=PROJECT_COLORS.map(c=>`<div class="color-opt${np.color===c?' selected':''}" style="background:${c}" onclick="state.plannerNew.color='${c}';render()"></div>`).join('');
+  let phaseRows=np.phases.map((ph,i)=>{
+    let c=phaseColor(ph.name,i),comp=computed[i];
+    return`<div class="planner-phase-row">
+      <span class="planner-swatch" style="background:${c.bg};border:1px solid ${c.text}40"></span>
+      <span class="planner-phase-name"><input value="${esc(ph.name)}" oninput="updatePlannerPhaseName(${i},this.value)" style="border:none;background:transparent;font-size:12px;color:var(--color-text-primary);font-family:var(--font-sans);width:100%;outline:none"/></span>
+      <div class="planner-dur"><input class="dur-input" type="number" min="1" max="90" value="${ph.defaultDays||5}" oninput="updatePlannerDur(${i},this.value)"/><span>days</span></div>
+      <span class="planner-dates${comp?' computed':''}">${comp?`${fmtDate(comp.start)} &rarr; ${fmtDate(comp.end)}`:'&mdash;'}</span>
+      <button class="delete-btn row-del-btn" onclick="deletePlannerPhase(${i})">&#215;</button>
+    </div>`;
+  }).join('');
+  let actionBar=dl?`<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+    ${isInPast?`<span class="warning-badge">&#9888; Project starts in the past (${fmtDate(startDate)})</span>`:`<span class="success-badge">&#10003; Starts ${fmtDate(startDate)} &mdash; ${totalDays} days total</span>`}
+    <button class="btn btn-primary" onclick="applyPlannerToProject()">Add to dashboard &rarr;</button>
+  </div>`:'';
+  return`<div class="planner-view">
+    <div class="planner-card">
+      <div class="section-label">Deadline planner</div>
+      <div class="planner-header">
+        <div class="form-group" style="flex:2;min-width:160px"><label class="form-label">Project name</label><input class="form-input" value="${esc(np.projectName)}" oninput="state.plannerNew.projectName=this.value"/></div>
+        <div class="form-group"><label class="form-label">Final deadline</label><input class="form-input" type="date" value="${dl}" onchange="state.plannerNew.deadline=this.value;render()"/></div>
+        <div class="form-group"><label class="form-label">Color</label><div class="color-picker-row">${colorOpts}</div></div>
+      </div>
+      <div style="border-top:0.5px solid var(--color-border-tertiary);padding-top:10px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <span style="font-size:11px;color:var(--color-text-secondary)">Phase &middot; Duration &middot; Computed dates (back from deadline)</span>
+          <button class="add-phase-btn" onclick="addPlannerPhase()">+ Add phase</button>
+        </div>
+        ${phaseRows}
+      </div>
+      ${actionBar?`<div class="divider"></div>${actionBar}`:''}
+    </div>
+    <p style="font-size:12px;color:var(--color-text-secondary);line-height:1.6;padding:0 2px">Set a deadline and the planner fills in each phase working backwards. Adjust any duration and dates recalculate instantly. Click <strong style="font-weight:500">Add to dashboard</strong> to push it to the Gantt, where you can fine-tune individual dates.</p>
+  </div>`;
+}
+
+function renderProjectTab(pid){
+  let p=state.projects.find(x=>x.id===pid);
+  if(!p)return'<div class="empty">Project not found.</div>';
+  let colorOpts=PROJECT_COLORS.map(c=>`<div class="color-opt${p.color===c?' selected':''}" style="background:${c}" onclick="setProjectColor(${p.id},'${c}')"></div>`).join('');
+  let colorPicker=state.showColorPicker===p.id?`<div class="inline-color-picker">${colorOpts}</div>`:'';
+  let allDates=p.phases.flatMap(ph=>[ph.start,ph.end]).filter(Boolean).sort();
+  let projStart=allDates[0]||'',projEnd=allDates[allDates.length-1]||'';
+  let totalDays=p.phases.reduce((s,ph)=>s+(ph.start&&ph.end?durDays(ph.start,ph.end):0),0);
+  let phaseRows=p.phases.map((ph,i)=>{
+    let c=phaseColor(ph.name,i),dur=ph.start&&ph.end?durDays(ph.start,ph.end)+'d':'';
+    return`<tr>
+      <td style="width:35%"><div class="phase-name-cell"><span style="width:9px;height:9px;border-radius:2px;background:${c.bg};border:1px solid ${c.text}40;flex-shrink:0;display:inline-block"></span><input value="${esc(ph.name)}" oninput="updatePhaseName(${p.id},${i},this.value)" style="border:none;background:transparent;font-size:12px;color:var(--color-text-primary);font-family:var(--font-sans);width:calc(100% - 18px);outline:none"/></div></td>
+      <td style="width:26%"><input type="date" class="date-input" value="${ph.start||''}" onchange="updatePhaseDate(${p.id},${i},'start',this.value)"/></td>
+      <td style="width:26%"><input type="date" class="date-input" value="${ph.end||''}" onchange="updatePhaseDate(${p.id},${i},'end',this.value)"/></td>
+      <td style="width:9%;color:var(--color-text-secondary);font-size:11px">${dur}</td>
+      <td style="width:4%"><button class="delete-btn row-del-btn" onclick="deletePhase(${p.id},${i})">&#215;</button></td>
+    </tr>`;
+  }).join('');
+  return`<div class="project-view">
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      <div style="display:flex;flex-direction:column;gap:4px;padding-top:6px">
+        <div class="proj-color-btn" style="background:${p.color||'#888'}" onclick="toggleColorPicker(${p.id})"></div>
+        ${colorPicker}
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+        <input class="project-title-input" value="${esc(p.name)}" oninput="updateProjectName(${p.id},this.value)" placeholder="Project name"/>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <select onchange="updateProjectStatus(${p.id},this.value)" style="border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:5px 8px;font-size:12px;background:transparent;color:var(--color-text-primary);cursor:pointer;font-family:var(--font-sans)">
+            <option value="planned"${p.status==='planned'?' selected':''}>Planned</option>
+            <option value="active"${p.status==='active'?' selected':''}>Active</option>
+            <option value="complete"${p.status==='complete'?' selected':''}>Complete</option>
+          </select>
+          ${projStart?`<span style="font-size:12px;color:var(--color-text-secondary)">${fmtDate(projStart)} &rarr; ${fmtDate(projEnd)} &middot; ${totalDays} days total</span>`:''}
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+        <span class="section-label" style="margin-bottom:0">Phases &amp; timeline</span>
+        <button class="btn" style="font-size:11px" onclick="openPlannerForProject(${p.id})">Re-plan from deadline</button>
+      </div>
+      <table class="phases-table">
+        <thead><tr><th>Phase</th><th>Start</th><th>End</th><th>Dur.</th><th></th></tr></thead>
+        <tbody>${phaseRows}</tbody>
+      </table>
+      <div style="padding:5px 8px"><button class="add-phase-btn" onclick="addPhase(${p.id})">+ Add phase</button></div>
+    </div>
+    <div>
+      <div class="section-label">Notes</div>
+      <textarea class="notes-input" oninput="updateNotes(${p.id},this.value)" placeholder="Notes, links, context&hellip;">${esc(p.notes||'')}</textarea>
+    </div>
+    <div class="divider"></div>
+    <div class="proj-footer">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a href="${GS_URL}" class="gs-link" target="_blank" rel="noopener">Google Sheet &#8599;</a>
+        <button class="btn" onclick="exportCSV(${p.id})">Export CSV</button>
+      </div>
+      <button class="btn btn-danger" onclick="deleteProject(${p.id})">Delete project</button>
+    </div>
+  </div>`;
+}
+
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function render(){
+  let v=state.view;
+  let mainContent='';
+  if(v==='gantt')mainContent=renderGantt();
+  else if(v==='capacity')mainContent=renderCapacity();
+  else if(v==='fit')mainContent=renderFit();
+  else if(v==='planner')mainContent=renderPlanner();
+  else if(v==='project')mainContent=renderProjectTab(state.activeProject);
+
+  let projTabs=state.projects.map(p=>`<div class="tab${v==='project'&&state.activeProject===p.id?' active':''}" onclick="selectProject(${p.id})"><span class="tab-dot" style="background:${p.color||'#888'}"></span>${esc(p.name)||'Unnamed'}</div>`).join('');
+
+  let modal='';
+  if(state.showNewProject){
+    let colorOpts2=PROJECT_COLORS.map(c=>`<div class="color-opt${state.newProject.color===c?' selected':''}" style="background:${c}" onclick="state.newProject.color='${c}';render()"></div>`).join('');
+    modal=`<div class="modal-overlay" onclick="if(event.target===this)closeModal()">
+      <div class="modal">
+        <h3>New project</h3>
+        <div class="form-group"><label class="form-label">Name</label><input class="form-input" id="npName" placeholder="Project name" value="${esc(state.newProject.name)}" oninput="state.newProject.name=this.value"/></div>
+        <div class="form-group"><label class="form-label">Color</label><div class="color-picker-row">${colorOpts2}</div></div>
+        <div class="form-group"><label class="form-label">Status</label><select class="form-input" onchange="state.newProject.status=this.value"><option value="planned">Planned</option><option value="active">Active</option></select></div>
+        <div class="modal-actions"><button class="btn" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="createProject()">Create</button></div>
+      </div>
+    </div>`;
+  }
+
+  document.getElementById('app').innerHTML=`
+    <div class="topbar">
+      <div class="topbar-left"><span class="app-title">&#128202; Project Dashboard</span></div>
+      <div class="topbar-right">
+        <div style="display:flex;gap:2px">
+          <button class="btn${v==='gantt'?' active':''}" onclick="setView('gantt')">Gantt</button>
+          <button class="btn${v==='capacity'?' active':''}" onclick="setView('capacity')">Capacity</button>
+          <button class="btn${v==='fit'?' active':''}" onclick="setView('fit')">Fit finder</button>
+          <button class="btn${v==='planner'?' active':''}" onclick="setView('planner')">Deadline planner</button>
+        </div>
+        <div style="display:flex;gap:2px">
+          <button class="btn${state.timeRange==='weekly'?' active':''}" onclick="setRange('weekly')">Week</button>
+          <button class="btn${state.timeRange==='monthly'?' active':''}" onclick="setRange('monthly')">Month</button>
+          <button class="btn${state.timeRange==='quarterly'?' active':''}" onclick="setRange('quarterly')">Quarter</button>
+        </div>
+        <button class="btn" onclick="exportAllCSV()">Export all CSV</button>
+        <button class="btn btn-primary" onclick="showNewProject()">+ New project</button>
+        <a href="${GS_URL}" class="gs-link" target="_blank" rel="noopener">Sheet &#8599;</a>
+      </div>
+    </div>
+    <div class="tab-bar">
+      <div class="tab${v==='gantt'?' active':''}" onclick="setView('gantt')">Gantt</div>
+      <div class="tab${v==='capacity'?' active':''}" onclick="setView('capacity')">Capacity</div>
+      <div class="tab${v==='fit'?' active':''}" onclick="setView('fit')">Fit finder</div>
+      <div class="tab${v==='planner'?' active':''}" onclick="setView('planner')">Deadline planner</div>
+      <div class="tab-sep"></div>
+      ${projTabs}
+      <div class="tab-add" onclick="showNewProject()" title="New project">+</div>
+    </div>
+    <div class="content">${mainContent}</div>
+    ${modal}
+  `;
+}
+
+function setView(v){state.view=v;render();}
+function setRange(r){state.timeRange=r;render();}
+function selectProject(id){state.activeProject=id;state.view='project';state.showColorPicker=null;render();}
+function showNewProject(){state.showNewProject=true;state.newProject={name:'',status:'planned',color:PROJECT_COLORS[state.projects.length%PROJECT_COLORS.length]};render();}
+function closeModal(){state.showNewProject=false;render();}
+function toggleColorPicker(id){state.showColorPicker=state.showColorPicker===id?null:id;render();}
+function setProjectColor(id,c){let p=state.projects.find(x=>x.id===id);if(p){p.color=c;state.showColorPicker=null;render();saveState();}}
+function updatePlannerPhaseName(i,val){if(state.plannerNew&&state.plannerNew.phases[i]){state.plannerNew.phases[i].name=val;render();}}
+function updatePlannerDur(i,val){if(state.plannerNew&&state.plannerNew.phases[i]){state.plannerNew.phases[i].defaultDays=parseInt(val)||1;render();}}
+function addPlannerPhase(){if(!state.plannerNew)return;state.plannerNew.phases.push({name:'New phase',defaultDays:5});render();}
+function deletePlannerPhase(i){if(!state.plannerNew)return;state.plannerNew.phases.splice(i,1);render();}
+function applyPlannerToProject(){
+  let np=state.plannerNew;if(!np||!np.deadline)return;
+  let computed=computeBackwards(np.phases,np.deadline);
+  let id=Date.now();
+  state.projects.push({id,name:np.projectName||'New Project',status:'planned',color:np.color||PROJECT_COLORS[0],notes:'',phases:computed.map(ph=>({name:ph.name,start:ph.start,end:ph.end}))});
+  state.plannerNew=null;state.activeProject=id;state.view='project';render();saveState();
+}
+function openPlannerForProject(pid){
+  let p=state.projects.find(x=>x.id===pid);if(!p)return;
+  state.plannerNew={deadline:'',projectName:p.name,color:p.color,phases:p.phases.map(ph=>({name:ph.name,defaultDays:ph.start&&ph.end?durDays(ph.start,ph.end):(DEFAULT_PHASE_DURATIONS[ph.name]||5)}))};
+  state.view='planner';render();
+}
+function createProject(){
+  let name=state.newProject.name.trim()||'New Project',id=Date.now();
+  state.projects.push({id,name,status:state.newProject.status,color:state.newProject.color||PROJECT_COLORS[0],notes:'',phases:DEFAULT_PHASES.map(n=>({name:n,start:'',end:''}))});
+  state.showNewProject=false;state.activeProject=id;state.view='project';render();saveState();
+}
+function deleteProject(id){if(!confirm('Delete this project?'))return;state.projects=state.projects.filter(p=>p.id!==id);state.activeProject=null;state.view='gantt';render();saveState();}
+function updateProjectName(id,val){let p=state.projects.find(x=>x.id===id);if(p){p.name=val;saveState();}}
+function updateProjectStatus(id,val){let p=state.projects.find(x=>x.id===id);if(p){p.status=val;render();saveState();}}
+function updateNotes(id,val){let p=state.projects.find(x=>x.id===id);if(p){p.notes=val;saveState();}}
+function updatePhaseDate(pid,idx,field,val){let p=state.projects.find(x=>x.id===pid);if(p&&p.phases[idx]){p.phases[idx][field]=val;render();saveState();}}
+function updatePhaseName(pid,idx,val){let p=state.projects.find(x=>x.id===pid);if(p&&p.phases[idx]){p.phases[idx].name=val;saveState();}}
+function addPhase(pid){let p=state.projects.find(x=>x.id===pid);if(p){p.phases.push({name:'New phase',start:'',end:''});render();saveState();}}
+function deletePhase(pid,idx){let p=state.projects.find(x=>x.id===pid);if(p){p.phases.splice(idx,1);render();saveState();}}
+function toCSV(rows){return rows.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');}
+function downloadCSV(csv,fn){let b=new Blob([csv],{type:'text/csv'});let a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=fn;document.body.appendChild(a);a.click();document.body.removeChild(a);}
+function exportCSV(pid){let p=state.projects.find(x=>x.id===pid);if(!p)return;let rows=[['Project','Status','Phase','Start','End','Duration (days)','Notes']];p.phases.forEach(ph=>{let d=ph.start&&ph.end?durDays(ph.start,ph.end):'';rows.push([p.name,p.status,ph.name,ph.start||'',ph.end||'',d,p.notes||'']);});downloadCSV(toCSV(rows),`${p.name.replace(/[^a-z0-9]/gi,'_')}.csv`);}
+function exportAllCSV(){let rows=[['Project','Status','Color','Phase','Start','End','Duration (days)','Notes']];state.projects.forEach(p=>{p.phases.forEach(ph=>{let d=ph.start&&ph.end?durDays(ph.start,ph.end):'';rows.push([p.name,p.status,p.color||'',ph.name,ph.start||'',ph.end||'',d,p.notes||'']);});});downloadCSV(toCSV(rows),'all_projects.csv');}
+
+render();
+</script>
+</body>
+</html>
