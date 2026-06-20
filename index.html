@@ -22,40 +22,62 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--ff);font-size:13px;color:var(--tx1);background:var(--bg3);min-height:100vh}
-.shell{max-width:1200px;margin:20px auto;background:var(--bg1);border:.5px solid var(--bd3);border-radius:var(--r2);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07)}
-.app{display:flex;flex-direction:column;min-height:640px}
-
-/* topbar */
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-bottom:.5px solid var(--bd3);gap:8px;flex-wrap:wrap;background:var(--bg1)}
-.tr{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.shell{max-width:1280px;margin:16px auto;background:var(--bg1);border:.5px solid var(--bd3);border-radius:var(--r2);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.app{display:flex;flex-direction:column;min-height:700px;width:100%}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-bottom:.5px solid var(--bd3);gap:8px;flex-wrap:wrap;background:var(--bg1)}
+.brand{display:flex;align-items:center;gap:8px}
+.logo{width:26px;height:26px;border-radius:6px;background:#1D9E75;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0}
+.logo img{width:100%;height:100%;object-fit:cover;border-radius:6px}
 .ttl{font-size:15px;font-weight:500}
+.tr{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
 .btn{background:transparent;border:.5px solid var(--bd2);border-radius:var(--r1);padding:4px 10px;font-size:12px;cursor:pointer;color:var(--tx1);white-space:nowrap;font-family:var(--ff)}
 .btn:hover{background:var(--bg2)}
 .btn.on{background:var(--bg2);border-color:var(--bd1);font-weight:500}
-.btn-p{background:var(--bg2);border:.5px solid var(--bd1)}
+.btn-new{background:#1D9E75;border:.5px solid #1D9E75;color:#fff;font-weight:500;padding:5px 12px}
+.btn-new:hover{background:#0F6E56;border-color:#0F6E56}
 .btn-s{padding:3px 8px;font-size:11px}
 .btn-d{color:#791F1F;border-color:#F09595}
 .btn-d:hover{background:#FCEBEB}
-
-/* tab bar */
-.tab-bar{display:flex;align-items:stretch;border-bottom:.5px solid var(--bd3);padding:0 14px;gap:2px;overflow-x:auto;background:var(--bg1)}
-.tab{padding:7px 11px;font-size:12px;cursor:pointer;border-bottom:2px solid transparent;color:var(--tx2);white-space:nowrap;display:flex;align-items:center;gap:5px;user-select:none}
-.tab:hover{color:var(--tx1)}
-.tab.on{color:var(--tx1);border-bottom-color:var(--tx1);font-weight:500}
-.tab-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.tsep{width:.5px;background:var(--bd3);margin:5px 3px;align-self:stretch}
-.tadd{padding:7px 9px;cursor:pointer;color:var(--tx3);display:flex;align-items:center;font-size:18px}
-.tadd:hover{color:var(--tx1)}
-.content{flex:1}
-
-/* badges */
-.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500;white-space:nowrap}
-.b-req{background:#EEEDFE;color:#3C3489}.b-app{background:#E1F5EE;color:#085041}
-.b-rej{background:#FCEBEB;color:#791F1F}.b-hld{background:#F1EFE8;color:#444441}
-.b-upc{background:#E6F1FB;color:#0C447C}.b-pln{background:#E6F1FB;color:#0C447C}
-.b-act{background:#E1F5EE;color:#085041}.b-cmp{background:#EAF3DE;color:#27500A}
-
-/* forms */
+.content{flex:1;padding:0}
+.section-nav{display:flex;align-items:stretch;border-bottom:.5px solid var(--bd3);padding:0 6px;gap:1px;overflow-x:auto;flex-shrink:0;background:var(--bg1)}
+.stab{padding:8px 13px;font-size:12px;cursor:pointer;border-bottom:2px solid transparent;color:var(--tx2);white-space:nowrap;display:flex;align-items:center;gap:5px;user-select:none}
+.stab:hover{color:var(--tx1)}
+.stab.on{color:var(--tx1);border-bottom-color:var(--tx1);font-weight:500}
+.proj-tab-row{display:flex;align-items:stretch;border-bottom:.5px solid var(--bd3);padding:0 6px;gap:1px;overflow-x:auto;flex-shrink:0;background:var(--bg1)}
+.ptab{padding:7px 12px;font-size:12px;cursor:pointer;border-bottom:2px solid transparent;color:var(--tx2);white-space:nowrap;display:flex;align-items:center;gap:5px;user-select:none}
+.ptab:hover{color:var(--tx1)}
+.ptab.on{color:var(--tx1);border-bottom-color:var(--tx1);font-weight:500}
+.nav-bar{display:flex;align-items:center;justify-content:center;gap:10px;padding:7px 12px;border-bottom:.5px solid var(--bd3);background:var(--bg1)}
+.nav-lbl{font-size:13px;font-weight:500;min-width:160px;text-align:center}
+.nav-btn{background:transparent;border:.5px solid var(--bd2);border-radius:var(--r1);width:26px;height:26px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.nav-btn:hover{background:var(--bg2)}
+.gw{overflow-x:auto;max-height:520px;overflow-y:auto}
+.gt{min-width:900px}
+.gh{display:flex;position:sticky;top:0;background:var(--bg1);z-index:10;border-bottom:.5px solid var(--bd3)}
+.glc{width:190px;min-width:190px;padding:7px 12px;font-size:11px;color:var(--tx2);font-weight:500;border-right:.5px solid var(--bd3)}
+.gtlh{flex:1;overflow:hidden}
+.gmr{display:flex}
+.gmc{flex:0 0 auto;font-size:11px;color:var(--tx2);padding:3px 4px;border-right:.5px solid var(--bd3);text-align:center;overflow:hidden;white-space:nowrap}
+.gdr{display:flex;border-top:.5px solid var(--bd3)}
+.gdc{flex:0 0 auto;font-size:10px;color:var(--tx3);text-align:center;border-right:.5px solid var(--bd3);padding:2px 0;overflow:hidden}
+.grow{display:flex;border-bottom:.5px solid var(--bd3);min-height:50px;cursor:pointer}
+.grow:hover .glbl{background:var(--bg2)}
+.glbl{width:190px;min-width:190px;padding:7px 12px;border-right:.5px solid var(--bd3);display:flex;align-items:center;gap:7px}
+.pdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.glblt{overflow:hidden}
+.glbln{font-weight:500;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.glbls{font-size:10px;color:var(--tx2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gbars{flex:1;position:relative}
+.gbar{position:absolute;height:20px;border-radius:3px;top:50%;transform:translateY(-50%);display:flex;align-items:center;padding:0 5px;font-size:10px;font-weight:500;white-space:nowrap;overflow:hidden}
+.ggrid{position:absolute;top:0;bottom:0;width:.5px;background:var(--bd3);pointer-events:none}
+.gtoday{position:absolute;top:0;bottom:0;width:2px;background:#E24B4A;pointer-events:none;z-index:5}
+.gconflict{position:absolute;top:0;bottom:0;pointer-events:none;z-index:4;opacity:.18}
+.gcbadge{position:absolute;top:2px;right:4px;font-size:10px;background:#FCEBEB;color:#791F1F;border:.5px solid #F09595;border-radius:4px;padding:1px 5px;white-space:nowrap;z-index:6}
+.legend{display:flex;flex-wrap:wrap;gap:7px;padding:8px 14px;border-top:.5px solid var(--bd3);align-items:center}
+.li{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--tx2)}
+.lsw{width:9px;height:9px;border-radius:2px;flex-shrink:0}
+.alerts{padding:8px 14px;display:flex;flex-direction:column;gap:5px}
+.arow{display:flex;align-items:center;gap:8px;padding:6px 10px;background:#FCEBEB;border:.5px solid #F09595;border-radius:var(--r1);font-size:12px;color:#791F1F}
 .fg{display:flex;flex-direction:column;gap:3px}
 .fl{font-size:11px;color:var(--tx2)}
 .fi{border:.5px solid var(--bd2);border-radius:var(--r1);padding:5px 8px;font-size:12px;background:transparent;color:var(--tx1);font-family:var(--ff);width:100%}
@@ -67,117 +89,35 @@ body{font-family:var(--ff);font-size:13px;color:var(--tx1);background:var(--bg3)
 .notes-ta:focus{outline:none;border-color:var(--bd1)}
 .sel-in{background:transparent;border:.5px solid var(--bd2);border-radius:4px;color:var(--tx1);font-size:12px;padding:2px 4px;font-family:var(--ff);cursor:pointer}
 .divider{height:.5px;background:var(--bd3)}
-
-/* gantt */
-.gw{overflow-x:auto;max-height:430px;overflow-y:auto}
-.gt{min-width:800px}
-.gh{display:flex;position:sticky;top:0;background:var(--bg1);z-index:10;border-bottom:.5px solid var(--bd3)}
-.glc{width:170px;min-width:170px;padding:7px 10px;font-size:11px;color:var(--tx2);font-weight:500;border-right:.5px solid var(--bd3)}
-.gtlh{flex:1;overflow:hidden}
-.gmr{display:flex}
-.gmc{flex:0 0 auto;font-size:11px;color:var(--tx2);padding:3px 4px;border-right:.5px solid var(--bd3);text-align:center;overflow:hidden;white-space:nowrap}
-.gdr{display:flex;border-top:.5px solid var(--bd3)}
-.gdc{flex:0 0 auto;font-size:10px;color:var(--tx3);text-align:center;border-right:.5px solid var(--bd3);padding:2px 0;overflow:hidden}
-.grow{display:flex;border-bottom:.5px solid var(--bd3);min-height:46px;cursor:pointer}
-.grow:hover .glbl{background:var(--bg2)}
-.glbl{width:170px;min-width:170px;padding:7px 10px;border-right:.5px solid var(--bd3);display:flex;align-items:center;gap:7px;transition:background .15s}
-.pdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.glblt{overflow:hidden}
-.glbln{font-weight:500;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.glbls{font-size:10px;color:var(--tx2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.gbars{flex:1;position:relative}
-.gbar{position:absolute;height:18px;border-radius:3px;top:50%;transform:translateY(-50%);display:flex;align-items:center;padding:0 4px;font-size:10px;font-weight:500;white-space:nowrap;overflow:hidden}
-.ggrid{position:absolute;top:0;bottom:0;width:.5px;background:var(--bd3);pointer-events:none}
-.gtoday{position:absolute;top:0;bottom:0;width:2px;background:#E24B4A;pointer-events:none;z-index:5}
-.gconflict{position:absolute;top:0;bottom:0;pointer-events:none;z-index:4;opacity:.18}
-.gcbadge{position:absolute;top:2px;right:4px;font-size:10px;background:#FCEBEB;color:#791F1F;border:.5px solid #F09595;border-radius:4px;padding:1px 5px;white-space:nowrap;z-index:6}
-.legend{display:flex;flex-wrap:wrap;gap:7px;padding:7px 14px;border-top:.5px solid var(--bd3);align-items:center}
-.li{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--tx2)}
-.lsw{width:9px;height:9px;border-radius:2px;flex-shrink:0}
-.alerts{padding:7px 14px;display:flex;flex-direction:column;gap:5px}
-.arow{display:flex;align-items:center;gap:8px;padding:6px 10px;background:#FCEBEB;border:.5px solid #F09595;border-radius:var(--r1);font-size:12px;color:#791F1F}
-
-/* capacity */
-.capv{padding:14px;display:flex;flex-direction:column;gap:9px;overflow-y:auto;max-height:540px}
-.capc{background:var(--bg2);border-radius:var(--r1);padding:9px 13px}
+.capv{padding:18px;display:flex;flex-direction:column;gap:9px;overflow-y:auto;max-height:580px}
+.capc{background:var(--bg2);border-radius:var(--r1);padding:10px 14px}
 .capt{height:13px;border-radius:3px;background:var(--bd3);overflow:hidden;margin:5px 0 3px}
 .capf{height:100%;border-radius:3px}
 .ok{background:#1D9E75}.warn{background:#BA7517}.over{background:#E24B4A}
-
-/* fit */
-.fitv{padding:14px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:540px}
+.fitv{padding:18px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:580px}
 .fslot{border-radius:var(--r1);padding:9px 12px;border:.5px solid var(--bd3)}
 .fslot.good{border-color:#5DCAA5;background:#E1F5EE;color:#085041}
 .fslot.tight{border-color:#EF9F27;background:#FAEEDA;color:#633806}
 .fslot.none{border-color:#F09595;background:#FCEBEB;color:#791F1F}
 .fslot-t{font-size:12px;font-weight:500;margin-bottom:2px}
 .fslot-s{font-size:11px;opacity:.8}
-
-/* planner */
-.plv{padding:14px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:600px}
-.plc{border:.5px solid var(--bd3);border-radius:var(--r2);padding:13px;display:flex;flex-direction:column;gap:11px}
+.plv{padding:18px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:640px}
+.plc{border:.5px solid var(--bd3);border-radius:var(--r2);padding:14px;display:flex;flex-direction:column;gap:11px}
 .plr{display:flex;align-items:center;gap:7px;padding:6px 0;border-bottom:.5px solid var(--bd3)}
 .plr:last-child{border-bottom:none}
 .plsw{width:8px;height:8px;border-radius:2px;flex-shrink:0}
 .durin{background:transparent;border:.5px solid var(--bd3);border-radius:4px;color:var(--tx1);font-size:12px;padding:2px 4px;width:46px;font-family:var(--ff);text-align:center}
-.durin:focus{outline:none;border-color:var(--bd1)}
 .pld{font-size:12px;color:var(--tx2);min-width:140px;text-align:right}
 .pld.set{color:var(--tx1)}
 .suc{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:3px 9px;border-radius:var(--r1);background:#E1F5EE;color:#085041;border:.5px solid #5DCAA5}
 .wrn{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:3px 9px;border-radius:var(--r1);background:#FAEEDA;color:#633806;border:.5px solid #EF9F27}
-
-/* owner view */
-.ovv{padding:14px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:580px}
-.ovg{border:.5px solid var(--bd3);border-radius:var(--r2);overflow:hidden}
-.ovgh{padding:9px 12px;background:var(--bg2);display:flex;align-items:center;gap:10px;border-bottom:.5px solid var(--bd3)}
-.av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0}
-.ovpr{padding:8px 12px;display:flex;align-items:center;gap:10px;border-bottom:.5px solid var(--bd3);cursor:pointer}
-.ovpr:last-child{border-bottom:none}
-.ovpr:hover{background:var(--bg2)}
-.ovbw{flex:1;height:10px;background:var(--bd3);border-radius:3px;position:relative;overflow:hidden}
-.ovbs{position:absolute;height:100%}
-
-/* table view */
-.tv{display:flex;flex-direction:column}
-.tvhdr{background:#7B6BA8;padding:10px 14px}
-.tvhdr h2{font-size:14px;font-weight:500;color:#fff;margin-bottom:1px}
-.tvhdr p{font-size:11px;color:rgba(255,255,255,.7)}
-.tvf{display:flex;align-items:center;gap:6px;padding:6px 12px;border-bottom:.5px solid var(--bd3);flex-wrap:wrap;background:var(--bg1)}
-.fb{padding:3px 9px;font-size:11px;border:.5px solid var(--bd3);border-radius:10px;cursor:pointer;background:transparent;color:var(--tx2);font-family:var(--ff)}
-.fb:hover{background:var(--bg2);color:var(--tx1)}
-.fb.on{border-color:var(--bd1);color:var(--tx1);background:var(--bg2);font-weight:500}
-.tvs{overflow-x:auto;max-height:460px;overflow-y:auto}
-.tvt{width:100%;border-collapse:collapse;table-layout:fixed;min-width:860px}
-.tvt thead{position:sticky;top:0;z-index:10}
-.tvt thead th{background:var(--bg2);padding:6px 9px;font-size:11px;font-weight:500;color:var(--tx2);text-align:left;border-bottom:.5px solid var(--bd3);border-right:.5px solid var(--bd3);white-space:nowrap;cursor:pointer;user-select:none}
-.tvt thead th:last-child{border-right:none}
-.tvt thead th:hover{color:var(--tx1)}
-.tvt tbody tr{border-bottom:.5px solid var(--bd3)}
-.tvt tbody tr:last-child{border-bottom:none}
-.tvt tbody tr:hover{background:var(--bg2)}
-.tvt tbody tr.rreq{background:#FFFDF0}
-.tvt tbody tr.rreq:hover{background:#FEF9E0}
-.tvt tbody tr.rhld td{opacity:.65}
-.tvt tbody tr.rrej td{opacity:.4}
-.tvt td{padding:6px 9px;border-right:.5px solid var(--bd3);vertical-align:middle;font-size:12px}
-.tvt td:last-child{border-right:none}
-.cel{background:transparent;border:none;color:var(--tx1);font-size:12px;font-family:var(--ff);width:100%;outline:none;padding:0}
-.cel:focus{background:var(--bg2);border-radius:3px;padding:1px 3px;margin:-1px -3px}
-.cels{background:transparent;border:none;color:var(--tx1);font-size:12px;font-family:var(--ff);cursor:pointer;padding:0;width:100%}
-.cels:focus{outline:none}
-.bdc{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
-.rdel{opacity:0;background:none;border:none;cursor:pointer;color:var(--tx3);font-size:14px;padding:2px 4px;border-radius:3px;font-family:var(--ff)}
-tr:hover .rdel{opacity:1}
-.rdel:hover{color:#E24B4A;background:#FCEBEB}
-.tvadd{display:flex;align-items:center;gap:5px;padding:7px 12px;font-size:12px;color:var(--tx3);cursor:pointer;border-top:.5px solid var(--bd3);background:var(--bg1)}
-.tvadd:hover{background:var(--bg2);color:var(--tx1)}
-.tvft{display:flex;align-items:center;justify-content:space-between;padding:6px 12px;border-top:.5px solid var(--bd3);background:var(--bg1);font-size:11px;color:var(--tx2)}
-
-/* project tab */
-.pv{padding:14px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:600px}
-.pvtitle{font-size:16px;font-weight:500;border:none;background:transparent;color:var(--tx1);outline:none;padding:2px 0;border-bottom:1.5px solid transparent;flex:1;font-family:var(--ff)}
-.pvtitle:focus{border-bottom-color:var(--bd1)}
-.slbl{font-size:11px;font-weight:500;color:var(--tx2);text-transform:uppercase;letter-spacing:.04em;margin-bottom:7px}
+.ovv{padding:18px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;max-height:620px}
+.ovrow{display:flex;align-items:center;gap:10px;padding:10px 14px;border:.5px solid var(--bd3);border-radius:var(--r2);cursor:pointer}
+.ovrow:hover{background:var(--bg2)}
+.av{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0}
+.ovname{font-size:13px;font-weight:500;min-width:110px}
+.ovphase{font-size:11px;display:flex;flex-direction:column;gap:2px;flex:1}
+.ovproj{font-size:12px;color:var(--tx1)}
 .pt{width:100%;border-collapse:collapse;table-layout:fixed}
 .pt th{font-size:11px;color:var(--tx2);font-weight:400;text-align:left;padding:4px 7px;border-bottom:.5px solid var(--bd3)}
 .pt td{padding:5px 7px;border-bottom:.5px solid var(--bd3);font-size:12px}
@@ -191,7 +131,6 @@ tr:hover .rdel{opacity:1}
 .gs-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--tx2);text-decoration:none;padding:4px 8px;border:.5px solid var(--bd3);border-radius:var(--r1)}
 .gs-link:hover{background:var(--bg2)}
 .cbtn{width:18px;height:18px;border-radius:50%;border:2px solid var(--bd2);cursor:pointer;flex-shrink:0}
-.cbtn:hover{transform:scale(1.15)}
 .cpkr{background:var(--bg1);border:.5px solid var(--bd3);border-radius:var(--r1);padding:9px;display:inline-flex;gap:7px;flex-wrap:wrap;margin-top:4px}
 .delbtn{background:none;border:none;cursor:pointer;color:var(--tx3);padding:2px 5px;border-radius:4px;font-size:14px;font-family:var(--ff)}
 .delbtn:hover{color:#E24B4A;background:#FCEBEB}
@@ -199,15 +138,47 @@ tr:hover .rdel{opacity:1}
 tr:hover .rdel2{opacity:1}
 .apbtn{font-size:12px;color:var(--tx2);cursor:pointer;background:none;border:none;padding:3px 7px;border-radius:4px;display:inline-flex;align-items:center;gap:3px;font-family:var(--ff)}
 .apbtn:hover{background:var(--bg2);color:var(--tx1)}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500;white-space:nowrap}
+.b-req{background:#EEEDFE;color:#3C3489}.b-app{background:#E6F1FB;color:#0C447C}.b-rej{background:#FCEBEB;color:#791F1F}
+.b-hld{background:#F1EFE8;color:#444441}.b-upc{background:#FAEEDA;color:#633806}.b-act{background:#E1F5EE;color:#085041}.b-cmp{background:#EAF3DE;color:#27500A}
 .hcard{background:#F1EFE8;border:.5px solid #D3D1C7;border-radius:var(--r1);padding:10px 12px;display:flex;flex-direction:column;gap:6px}
 .hcard.rej{background:#FCEBEB;border-color:#F09595}
-
-/* modal */
+.pv{padding:18px;display:flex;flex-direction:column;gap:13px;overflow-y:auto;max-height:640px}
+.pvtitle{font-size:17px;font-weight:500;border:none;background:transparent;color:var(--tx1);outline:none;padding:2px 0;border-bottom:1.5px solid transparent;flex:1;font-family:var(--ff)}
+.pvtitle:focus{border-bottom-color:var(--bd1)}
+.slbl{font-size:11px;font-weight:500;color:var(--tx2);text-transform:uppercase;letter-spacing:.04em;margin-bottom:7px}
+.tv{display:flex;flex-direction:column}
+.tvhdr{background:#7B6BA8;padding:12px 18px}
+.tvhdr h2{font-size:14px;font-weight:500;color:#fff;margin-bottom:1px}
+.tvhdr p{font-size:11px;color:rgba(255,255,255,.7)}
+.tvf{display:flex;align-items:center;gap:6px;padding:7px 16px;border-bottom:.5px solid var(--bd3);flex-wrap:wrap}
+.fb{padding:3px 9px;font-size:11px;border:.5px solid var(--bd3);border-radius:10px;cursor:pointer;background:transparent;color:var(--tx2);font-family:var(--ff)}
+.fb:hover{background:var(--bg2);color:var(--tx1)}
+.fb.on{border-color:var(--bd1);color:var(--tx1);background:var(--bg2);font-weight:500}
+.tvs{overflow-x:auto;max-height:540px;overflow-y:auto}
+.tvt{width:100%;border-collapse:collapse;table-layout:fixed;min-width:960px}
+.tvt thead{position:sticky;top:0;z-index:10}
+.tvt thead th{background:var(--bg2);padding:7px 10px;font-size:11px;font-weight:500;color:var(--tx2);text-align:left;border-bottom:.5px solid var(--bd3);border-right:.5px solid var(--bd3);white-space:nowrap;cursor:pointer}
+.tvt thead th:hover{color:var(--tx1)}
+.tvt tbody tr{border-bottom:.5px solid var(--bd3)}
+.tvt tbody tr:hover{background:var(--bg2)}
+.tvt tbody tr.rreq{background:#FFFDF0}
+.tvt tbody tr.rhld td{opacity:.65}
+.tvt tbody tr.rrej td{opacity:.4}
+.tvt td{padding:7px 10px;border-right:.5px solid var(--bd3);font-size:12px}
+.cel{background:transparent;border:none;color:var(--tx1);font-size:12px;font-family:var(--ff);width:100%;outline:none;padding:0}
+.cel:focus{background:var(--bg2);border-radius:3px;padding:1px 3px;margin:-1px -3px}
+.cels{background:transparent;border:none;color:var(--tx1);font-size:12px;font-family:var(--ff);cursor:pointer;padding:0;width:100%}
+.rdel{opacity:0;background:none;border:none;cursor:pointer;color:var(--tx3);font-size:14px;padding:2px 4px;border-radius:3px;font-family:var(--ff)}
+tr:hover .rdel{opacity:1}
+.rdel:hover{color:#E24B4A;background:#FCEBEB}
+.tvadd{display:flex;align-items:center;gap:5px;padding:8px 16px;font-size:12px;color:var(--tx3);cursor:pointer;border-top:.5px solid var(--bd3)}
+.tvadd:hover{background:var(--bg2);color:var(--tx1)}
+.tvft{display:flex;align-items:center;justify-content:space-between;padding:7px 16px;border-top:.5px solid var(--bd3);font-size:11px;color:var(--tx2)}
 .modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:200}
 .modal{background:var(--bg1);border:.5px solid var(--bd3);border-radius:var(--r2);padding:18px;width:360px;display:flex;flex-direction:column;gap:11px;box-shadow:0 8px 32px rgba(0,0,0,.18)}
 .modal h3{font-size:14px;font-weight:500}
 .mact{display:flex;gap:7px;justify-content:flex-end}
-
 .toast{position:fixed;bottom:16px;right:16px;background:var(--bg2);border:.5px solid var(--bd3);border-radius:var(--r1);padding:7px 14px;font-size:12px;color:var(--tx2);display:none;z-index:300;box-shadow:0 2px 8px rgba(0,0,0,.1)}
 </style>
 </head>
@@ -220,13 +191,12 @@ const PHCOLS={Request:{bg:'#E6F1FB',t:'#0C447C'},Planning:{bg:'#EEEDFE',t:'#3C34
 const POOL=[{bg:'#E6F1FB',t:'#0C447C'},{bg:'#EEEDFE',t:'#3C3489'},{bg:'#FAEEDA',t:'#633806'},{bg:'#E1F5EE',t:'#085041'},{bg:'#FAECE7',t:'#712B13'},{bg:'#FBEAF0',t:'#72243E'}];
 const DDUR={Request:3,Planning:5,Recruitment:7,Research:10,Analysis:5,Reporting:5};
 const DPHASES=['Request','Planning','Recruitment','Research','Analysis','Reporting'];
-const RST=['Request','Approved','Rejected','On Hold','Upcoming'];
-const PST=['Planned','Active','Complete'];
+const STS=['Request','Approved','Rejected','On Hold','Upcoming','Active','Completed'];
 const OBG=['#E6F1FB','#FAEEDA','#EEEDFE','#E1F5EE','#FBEAF0','#FAECE7'];
 const OTX=['#0C447C','#633806','#3C3489','#085041','#72243E','#712B13'];
 const GS='https://docs.google.com/spreadsheets/d/1NNseu9ZcaMTh65kSLlTuNe7DlIc9qj6VfBwUeYomDPc/edit';
-const SK='proj_dash_v5';
-
+const SK='proj_dash_v7';
+const LOGO_URL=''; // paste an image URL here (e.g. hosted logo) to replace the "UL" placeholder
 function pc(n,i){return PHCOLS[n]||POOL[i%POOL.length];}
 function td(){return new Date().toISOString().split('T')[0];}
 function tdf(){return new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});}
@@ -236,32 +206,31 @@ function fmtD(d){if(!d)return'';let[y,m,day]=d.split('-');return['Jan','Feb','Ma
 function fmtF(d){if(!d)return'';let[y,m,day]=d.split('-');return['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]+' '+parseInt(day)+', '+y;}
 function mbs(s,e){let r=[],c=new Date(new Date(s).getFullYear(),new Date(s).getMonth(),1),end=new Date(e);while(c<=end){r.push({y:c.getFullYear(),m:c.getMonth()});c.setMonth(c.getMonth()+1);}return r;}
 function fq(ds){let d=new Date(ds),m=d.getMonth(),fy=d.getFullYear();if(m>=8)return{q:1,fy:fy+1};if(m<=1)return{q:2,fy};if(m<=4)return{q:3,fy};return{q:4,fy};}
+function MN(){return['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];}
 function ini(n){if(!n)return'?';let p=n.trim().split(' ');return(p[0][0]+(p[1]?p[1][0]:'')).toUpperCase();}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function pse(p){let d=p.phases.flatMap(ph=>[ph.start,ph.end]).filter(Boolean).sort();return{s:d[0]||'',e:d[d.length-1]||''};}
-function save(){try{localStorage.setItem(SK,JSON.stringify(S));}catch(e){}let t=document.getElementById('toast');if(t){t.style.display='flex';clearTimeout(t._t);t._t=setTimeout(()=>t.style.display='none',1400);}}
+function save(){S.lastUpdated=tdf();try{localStorage.setItem(SK,JSON.stringify(S));}catch(e){}let t=document.getElementById('toast');if(t){t.style.display='flex';clearTimeout(t._t);t._t=setTimeout(()=>t.style.display='none',1400);}}
 function load(){try{let s=localStorage.getItem(SK);if(s)return JSON.parse(s);}catch(e){}return null;}
 
 let S=load()||{
-  view:'gantt',rng:'monthly',ap:null,showNew:false,cpk:null,plan:null,
-  fd:35,fa:td(),tf:'All',ts:null,td2:1,lu:tdf(),
+  view:'table',range:'monthly',navAnchor:new Date().toISOString(),ap:null,showNew:false,cpk:null,plan:null,
+  fd:35,fa:td(),tf:'All',ts:null,td2:1,lastUpdated:tdf(),
   projects:[
-    {id:1,name:'Market Research Study',rs:'Approved',ps:'Active',color:'#378ADD',owner:'Sarah Chen',stk:'Lisa Taylor, Student Success',notes:'Q4 consumer insights.',hn:'',cp:'Research',
+    {id:1,name:'Market Research Study',status:'Approved',color:'#378ADD',owner:'Sarah Chen',stk:'Lisa Taylor, Student Success',notes:'Q4 consumer insights.',hn:'',cp:'Research',
      phases:[{name:'Request',start:'2026-05-01',end:'2026-05-10',done:true,owner:'Sarah Chen'},{name:'Planning',start:'2026-05-11',end:'2026-05-25',done:true,owner:'Sarah Chen'},{name:'Recruitment',start:'2026-05-26',end:'2026-06-15',done:false,owner:'Tom Bauer'},{name:'Research',start:'2026-06-16',end:'2026-07-31',done:false,owner:'Sarah Chen'},{name:'Analysis',start:'2026-08-01',end:'2026-08-20',done:false,owner:'Sarah Chen'},{name:'Reporting',start:'2026-08-21',end:'2026-09-05',done:false,owner:'Sarah Chen'}]},
-    {id:2,name:'Brand Perception Survey',rs:'Approved',ps:'Planned',color:'#1D9E75',owner:'Tom Bauer',stk:'MJ Knoll-Finn, Camille Wilson',notes:'Annual brand tracker.',hn:'',cp:'Planning',
+    {id:2,name:'Brand Perception Survey',status:'Approved',color:'#1D9E75',owner:'Tom Bauer',stk:'MJ Knoll-Finn, Camille Wilson',notes:'Annual brand tracker.',hn:'',cp:'Planning',
      phases:[{name:'Request',start:'2026-06-20',end:'2026-06-30',done:false,owner:'Tom Bauer'},{name:'Planning',start:'2026-07-01',end:'2026-07-20',done:false,owner:'Tom Bauer'},{name:'Recruitment',start:'2026-07-21',end:'2026-08-10',done:false,owner:'Tom Bauer'},{name:'Research',start:'2026-08-11',end:'2026-09-15',done:false,owner:'Sarah Chen'},{name:'Analysis',start:'2026-09-16',end:'2026-10-01',done:false,owner:'Tom Bauer'},{name:'Reporting',start:'2026-10-02',end:'2026-10-20',done:false,owner:'Tom Bauer'}]},
-    {id:3,name:'UX Usability Testing',rs:'Approved',ps:'Active',color:'#D85A30',owner:'Sarah Chen',stk:'Kelsey Buttendorf, NYU IT',notes:'Moderated usability sessions.',hn:'',cp:'Recruitment',
+    {id:3,name:'UX Usability Testing',status:'Active',color:'#D85A30',owner:'Sarah Chen',stk:'Kelsey Buttendorf, NYU IT',notes:'Moderated usability sessions.',hn:'',cp:'Recruitment',
      phases:[{name:'Request',start:'2026-06-01',end:'2026-06-05',done:true,owner:'Sarah Chen'},{name:'Planning',start:'2026-06-06',end:'2026-06-14',done:false,owner:'Sarah Chen'},{name:'Recruitment',start:'2026-06-15',end:'2026-06-28',done:false,owner:'Tom Bauer'},{name:'Research',start:'2026-06-29',end:'2026-07-15',done:false,owner:'Sarah Chen'},{name:'Analysis',start:'2026-07-16',end:'2026-07-25',done:false,owner:'Sarah Chen'},{name:'Reporting',start:'2026-07-26',end:'2026-08-05',done:false,owner:'Sarah Chen'}]},
-    {id:4,name:'Student Onboarding Portal',rs:'Request',ps:'Planned',color:'#7F77DD',owner:'',stk:'Alexander Larsen, GEMMS',notes:'Fall project',hn:'',cp:'',
-     phases:DPHASES.map(n=>({name:n,start:'',end:'',done:false,owner:''}))},
-    {id:5,name:'Competitor Landscape Study',rs:'On Hold',ps:'Planned',color:'#888780',owner:'Mei Lin',stk:'Clay',notes:'On hold pending budget.',hn:'Budget review Q2 end. Revisit Sept 2026.',cp:'',
-     phases:DPHASES.map(n=>({name:n,start:'',end:'',done:false,owner:''}))}
+    {id:4,name:'Student Onboarding Portal',status:'Request',color:'#7F77DD',owner:'',stk:'Alexander Larsen, GEMMS',notes:'Fall project',hn:'',cp:'',phases:DPHASES.map(n=>({name:n,start:'',end:'',done:false,owner:''}))},
+    {id:5,name:'Competitor Landscape Study',status:'On Hold',color:'#888780',owner:'Mei Lin',stk:'Clay',notes:'On hold pending budget.',hn:'Budget review Q2 end. Revisit Sept 2026.',cp:'',phases:DPHASES.map(n=>({name:n,start:'',end:'',done:false,owner:''}))}
   ]
 };
-S.showNew=false;S.cpk=null;
+S.navAnchor=new Date().toISOString();S.showNew=false;S.cpk=null;
 
 function conflicts(){
-  let c=[],ps=S.projects.filter(p=>p.rs==='Approved'||p.rs==='Upcoming');
+  let c=[],ps=S.projects.filter(p=>['Approved','Upcoming','Active'].includes(p.status));
   for(let i=0;i<ps.length;i++)for(let j=i+1;j<ps.length;j++){
     let a=ps[i],b=ps[j];
     let ar=a.phases.filter(ph=>ph.name==='Research'&&ph.start&&ph.end);
@@ -273,37 +242,41 @@ function conflicts(){
   }
   return c;
 }
-
-function cback(phases,dl){
-  let rev=[...phases].reverse(),cur=dl;
-  rev=rev.map(ph=>{let d=ph.defaultDays||DDUR[ph.name]||5;let e=cur,s=subD(e,d-1);cur=subD(s,1);return{...ph,start:s,end:e};});
-  return rev.reverse();
-}
+function cback(phases,dl){let rev=[...phases].reverse(),cur=dl;rev=rev.map(ph=>{let d=ph.defaultDays||DDUR[ph.name]||5;let e=cur,s=subD(e,d-1);cur=subD(s,1);return{...ph,start:s,end:e};});return rev.reverse();}
 
 function gwin(){
-  let now=new Date(),r=S.rng;
-  if(r==='weekly'){let s=new Date(now);s.setDate(now.getDate()-now.getDay());let e=new Date(s);e.setDate(s.getDate()+27);return{s:s.toISOString().split('T')[0],e:e.toISOString().split('T')[0]};}
-  if(r==='monthly'){let s=new Date(now.getFullYear(),now.getMonth()-1,1);let e=new Date(now.getFullYear(),now.getMonth()+5,0);return{s:s.toISOString().split('T')[0],e:e.toISOString().split('T')[0]};}
-  let q=fq(now.toISOString().split('T')[0]),qs,qe;
-  if(q.q===1){qs=new Date(q.fy-1,8,1);qe=new Date(q.fy,5,30);}
-  else if(q.q===2){qs=new Date(q.fy-1,11,1);qe=new Date(q.fy,8,30);}
-  else if(q.q===3){qs=new Date(q.fy,2,1);qe=new Date(q.fy,11,31);}
-  else{qs=new Date(q.fy,5,1);qe=new Date(q.fy+1,5,30);}
-  return{s:qs.toISOString().split('T')[0],e:qe.toISOString().split('T')[0]};
+  let a=new Date(S.navAnchor);
+  if(S.range==='weekly'){let s=new Date(a);s.setDate(a.getDate()-a.getDay());let e=new Date(s);e.setDate(s.getDate()+6);return{s:s.toISOString().split('T')[0],e:e.toISOString().split('T')[0]};}
+  if(S.range==='quarterly'){
+    let q=fq(a.toISOString().split('T')[0]),qs,qe;
+    if(q.q===1){qs=new Date(q.fy-1,8,1);qe=new Date(q.fy-1,11,0);}
+    else if(q.q===2){qs=new Date(q.fy-1,11,1);qe=new Date(q.fy,2,0);}
+    else if(q.q===3){qs=new Date(q.fy,2,1);qe=new Date(q.fy,5,0);}
+    else{qs=new Date(q.fy,5,1);qe=new Date(q.fy,8,0);}
+    return{s:qs.toISOString().split('T')[0],e:qe.toISOString().split('T')[0]};
+  }
+  let s=new Date(a.getFullYear(),a.getMonth(),1),e=new Date(a.getFullYear(),a.getMonth()+1,0);
+  return{s:s.toISOString().split('T')[0],e:e.toISOString().split('T')[0]};
 }
 
-function ewin(){
-  let tw=gwin(),dates=[];
-  S.projects.forEach(p=>p.phases.forEach(ph=>{if(ph.start)dates.push(ph.start);if(ph.end)dates.push(ph.end);}));
-  if(!dates.length)return tw;dates.sort();
-  return{s:tw.s<dates[0]?tw.s:dates[0],e:tw.e>dates[dates.length-1]?tw.e:dates[dates.length-1]};
+function navLabel(){
+  let a=new Date(S.navAnchor);
+  if(S.range==='weekly'){let win=gwin();return`${fmtD(win.s)} &ndash; ${fmtD(win.e)}, ${a.getFullYear()}`;}
+  if(S.range==='quarterly'){let q=fq(a.toISOString().split('T')[0]);return`FY${q.fy} Q${q.q}`;}
+  return`${MN()[a.getMonth()]} ${a.getFullYear()}`;
 }
-
-function MN(){return['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];}
+function navShift(dir){
+  let a=new Date(S.navAnchor);
+  if(S.range==='weekly')a.setDate(a.getDate()+7*dir);
+  else if(S.range==='quarterly')a.setMonth(a.getMonth()+3*dir);
+  else a.setMonth(a.getMonth()+dir);
+  S.navAnchor=a.toISOString();render();
+}
+function navToday(){S.navAnchor=new Date().toISOString();render();}
 
 function rGantt(){
-  let win=ewin(),sD=new Date(win.s),eD=new Date(win.e),rng=Math.max(1,eD-sD);
-  let isW=S.rng==='weekly';
+  let win=gwin(),sD=new Date(win.s),eD=new Date(win.e),rng=Math.max(1,eD-sD);
+  let isW=S.range==='weekly';
   function pct(d){if(!d)return 0;return Math.max(0,Math.min(100,(new Date(d)-sD)/rng*100));}
   let tp=pct(td()),cf=conflicts(),months=mbs(win.s,win.e);
   let mRow=months.map(m=>{let ms=new Date(m.y,m.m,1),me=new Date(m.y,m.m+1,0);if(me>eD)me=eD;if(ms<sD)ms=sD;let w=Math.max(0,(me-ms)/rng*100);return`<div class="gmc" style="width:${w}%;min-width:${w}%">${MN()[m.m]}${isW?'':' '+m.y}</div>`;}).join('');
@@ -317,26 +290,33 @@ function rGantt(){
     marks=[...new Set(marks)].sort();
     dRow=`<div class="gdr" style="position:relative;height:16px">${marks.map(ds=>`<div style="position:absolute;left:${pct(ds)}%;font-size:10px;color:var(--tx3);transform:translateX(-50%)">${new Date(ds).getDate()}</div>`).join('')}</div>`;
   }
-  let rows=S.projects.filter(p=>p.rs!=='Rejected').map(p=>{
+  let visibleProjects=S.projects.filter(p=>{
+    if(p.status==='Rejected')return false;
+    let se=pse(p);
+    if(!se.s)return false;
+    return se.s<=win.e&&se.e>=win.s;
+  });
+  let rows=visibleProjects.map(p=>{
     let mc=cf.filter(c=>c.p1===p.name||c.p2===p.name);
     let bars=p.phases.map((ph,i)=>{if(!ph.start||!ph.end)return'';let l=pct(ph.start),r=pct(ph.end),w=Math.max(0.3,r-l);let c=pc(ph.name,i);return`<div class="gbar" style="left:${l}%;width:${w}%;background:${c.bg};color:${c.t}${ph.done?';opacity:.4':''}" title="${esc(ph.name)}${ph.owner?' ('+esc(ph.owner)+')':''}: ${fmtD(ph.start)}-${fmtD(ph.end)}">${esc(ph.name)}</div>`;}).join('');
     let cBars=mc.map(c=>{let l=pct(c.from),r=pct(c.to),w=Math.max(0.5,r-l);return`<div class="gconflict" style="left:${l}%;width:${w}%;background:#E24B4A"></div>`;}).join('');
     let grid=months.map(m=>{let lp=(new Date(m.y,m.m,1)-sD)/rng*100;return lp>0&&lp<100?`<div class="ggrid" style="left:${lp}%"></div>`:''}).join('');
-    let hb=p.rs==='On Hold'?` <span style="font-size:10px;background:#F1EFE8;color:#444441;border-radius:3px;padding:1px 4px">On Hold</span>`:'';
+    let hb=p.status==='On Hold'?` <span style="font-size:10px;background:#F1EFE8;color:#444441;border-radius:3px;padding:1px 4px">On Hold</span>`:'';
     return`<div class="grow" onclick="selP(${p.id})">
       <div class="glbl"><div class="pdot" style="background:${p.color}"></div><div class="glblt"><div class="glbln">${esc(p.name)}${hb}</div><div class="glbls">${esc(p.owner||'No owner')}</div></div></div>
-      <div class="gbars" style="position:relative;min-height:46px">${grid}${cBars}${bars}<div class="gtoday" style="left:${tp}%"></div>${mc.length?`<div class="gcbadge">&#9888; Research conflict: ${esc(mc[0].owner)}</div>`:''}</div>
+      <div class="gbars" style="position:relative;min-height:50px">${grid}${cBars}${bars}<div class="gtoday" style="left:${tp}%"></div>${mc.length?`<div class="gcbadge">&#9888; Research conflict: ${esc(mc[0].owner)}</div>`:''}</div>
     </div>`;
   }).join('');
-  let pu=[...new Set(S.projects.flatMap(p=>p.phases.map(ph=>ph.name)))];
+  let pu=[...new Set(visibleProjects.flatMap(p=>p.phases.map(ph=>ph.name)))];
   let aHTML=cf.length?`<div class="alerts">${cf.map(c=>`<div class="arow">&#9888; <strong style="font-weight:500">${esc(c.owner)}</strong> has overlapping Research on <em>${esc(c.p1)}</em> and <em>${esc(c.p2)}</em> (${fmtD(c.from)}&ndash;${fmtD(c.to)})</div>`).join('')}</div>`:'';
-  return`<div class="gw"><div class="gt">
+  return`<div class="nav-bar"><button class="nav-btn" onclick="navShift(-1)" aria-label="Previous"><i class="ti ti-chevron-left" aria-hidden="true"></i></button><span class="nav-lbl">${navLabel()}</span><button class="nav-btn" onclick="navShift(1)" aria-label="Next"><i class="ti ti-chevron-right" aria-hidden="true"></i></button><button class="btn btn-s" style="margin-left:10px" onclick="navToday()">Today</button></div>
+  <div class="gw"><div class="gt">
     <div class="gh"><div class="glc">Project / owner</div><div class="gtlh"><div class="gmr">${mRow}</div>${dRow}</div></div>
-    ${rows||'<div style="padding:32px;text-align:center;color:var(--tx2)">No projects yet. Click + to add one.</div>'}
+    ${rows||'<div style="padding:32px;text-align:center;color:var(--tx2)">No projects in this period.</div>'}
   </div></div>${aHTML}
   <div class="legend">
     <span style="font-size:11px;color:var(--tx2);margin-right:3px">Projects:</span>
-    ${S.projects.filter(p=>p.rs!=='Rejected').map(p=>`<span class="li"><span class="lsw" style="border-radius:50%;background:${p.color}"></span>${esc(p.name)}</span>`).join('')}
+    ${visibleProjects.map(p=>`<span class="li"><span class="lsw" style="border-radius:50%;background:${p.color}"></span>${esc(p.name)}</span>`).join('')}
     <span style="width:.5px;height:12px;background:var(--bd3);margin:0 4px"></span>
     ${pu.map((n,i)=>{let c=pc(n,i);return`<span class="li"><span class="lsw" style="background:${c.bg};border:1px solid ${c.t}40"></span>${n}</span>`;}).join('')}
     <span style="margin-left:auto;display:flex;align-items:center;gap:3px;font-size:11px;color:#E24B4A"><span style="display:inline-block;width:2px;height:11px;background:#E24B4A;border-radius:1px"></span>Today</span>
@@ -345,9 +325,10 @@ function rGantt(){
 
 function rCap(){
   let win=gwin(),months=mbs(win.s,win.e);
-  return`<div class="capv">${months.map(m=>{
+  return`<div class="nav-bar"><button class="nav-btn" onclick="navShift(-1)" aria-label="Previous"><i class="ti ti-chevron-left" aria-hidden="true"></i></button><span class="nav-lbl">${navLabel()}</span><button class="nav-btn" onclick="navShift(1)" aria-label="Next"><i class="ti ti-chevron-right" aria-hidden="true"></i></button><button class="btn btn-s" style="margin-left:10px" onclick="navToday()">Today</button></div>
+  <div class="capv">${months.map(m=>{
     let ms=new Date(m.y,m.m,1),me=new Date(m.y,m.m+1,0),tot=me.getDate(),busy=new Set();
-    S.projects.filter(p=>p.rs==='Approved'||p.rs==='Upcoming').forEach(p=>p.phases.forEach(ph=>{if(!ph.start||!ph.end)return;let ps=new Date(ph.start),pe=new Date(ph.end);for(let d=new Date(ms);d<=me;d.setDate(d.getDate()+1)){if(d>=ps&&d<=pe)busy.add(d.toISOString().split('T')[0]);}}));
+    S.projects.filter(p=>['Approved','Upcoming','Active'].includes(p.status)).forEach(p=>p.phases.forEach(ph=>{if(!ph.start||!ph.end)return;let ps=new Date(ph.start),pe=new Date(ph.end);for(let d=new Date(ms);d<=me;d.setDate(d.getDate()+1)){if(d>=ps&&d<=pe)busy.add(d.toISOString().split('T')[0]);}}));
     let p=Math.min(100,Math.round(busy.size/tot*100)),cls=p>85?'over':p>60?'warn':'ok';
     let q=fq(ms.toISOString().split('T')[0]);
     return`<div class="capc"><div style="display:flex;align-items:center;justify-content:space-between"><span style="font-size:12px;font-weight:500">${MN()[m.m]} ${m.y}</span><span style="font-size:10px;color:var(--tx2);background:var(--bg1);border:.5px solid var(--bd3);border-radius:10px;padding:1px 7px">FY${q.fy} Q${q.q}</span></div><div class="capt"><div class="capf ${cls}" style="width:${p}%"></div></div><div style="display:flex;justify-content:space-between"><span style="font-size:11px;color:var(--tx2)">${p}% used</span><span style="font-size:11px;color:${cls==='over'?'#791F1F':cls==='warn'?'#854F0B':'#085041'}">${tot-busy.size} days free</span></div></div>`;
@@ -358,13 +339,13 @@ function rFit(){
   let dn=parseInt(S.fd)||35,sa=S.fa||td();
   let h=new Date(sa);h.setMonth(h.getMonth()+12);
   let busy=new Set();
-  S.projects.filter(p=>p.rs==='Approved'||p.rs==='Upcoming').forEach(p=>p.phases.forEach(ph=>{if(!ph.start||!ph.end)return;let ps=new Date(ph.start),pe=new Date(ph.end),sd=new Date(sa);for(let d=new Date(ps>sd?ps:sd);d<=pe&&d<=h;d.setDate(d.getDate()+1))busy.add(d.toISOString().split('T')[0]);}));
+  S.projects.filter(p=>['Approved','Upcoming','Active'].includes(p.status)).forEach(p=>p.phases.forEach(ph=>{if(!ph.start||!ph.end)return;let ps=new Date(ph.start),pe=new Date(ph.end),sd=new Date(sa);for(let d=new Date(ps>sd?ps:sd);d<=pe&&d<=h;d.setDate(d.getDate()+1))busy.add(d.toISOString().split('T')[0]);}));
   let wins=[],cur=new Date(sa),ws=null,wd=0;
   for(let i=0;i<365;i++){let ds=cur.toISOString().split('T')[0];if(!busy.has(ds)){if(!ws)ws=ds;wd++;}else{if(ws&&wd>0){let e2=new Date(cur);e2.setDate(e2.getDate()-1);wins.push({s:ws,e:e2.toISOString().split('T')[0],d:wd});}ws=null;wd=0;}cur.setDate(cur.getDate()+1);}
   if(ws&&wd>0){let e2=new Date(cur);e2.setDate(e2.getDate()-1);wins.push({s:ws,e:e2.toISOString().split('T')[0],d:wd});}
   let slots=wins.filter(w=>w.d>=Math.max(1,dn*0.5)).slice(0,8);
   let sh=slots.length?slots.map(w=>{let fits=w.d>=dn,tight=!fits&&w.d>=dn*0.7,cls=fits?'good':tight?'tight':'none',lbl=fits?'Fits comfortably':tight?'Tight fit':'Too short';return`<div class="fslot ${cls}"><div class="fslot-t">${fmtF(w.s)} &ndash; ${fmtF(w.e)}</div><div class="fslot-s">${w.d} free days &middot; ${lbl}</div></div>`;}).join(''):`<div class="fslot none"><div class="fslot-t">No windows found</div><div class="fslot-s">No open slots in the next 12 months.</div></div>`;
-  return`<div class="fitv"><div style="border:.5px solid var(--bd3);border-radius:var(--r2);padding:13px"><div class="slbl" style="margin-bottom:9px">Fit calculator</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px"><div class="fg"><label class="fl">Duration needed (days)</label><input class="fi" type="number" min="1" max="365" value="${dn}" oninput="S.fd=this.value;render()"/></div><div class="fg"><label class="fl">Start no earlier than</label><input class="fi" type="date" value="${sa}" onchange="S.fa=this.value;render()"/></div></div></div><div><div class="slbl" style="margin-bottom:7px">Available windows</div><div style="display:flex;flex-direction:column;gap:7px">${sh}</div></div></div>`;
+  return`<div class="fitv"><div style="border:.5px solid var(--bd3);border-radius:var(--r2);padding:14px"><div class="slbl" style="margin-bottom:9px">Find availability</div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px"><div class="fg"><label class="fl">Duration needed (days)</label><input class="fi" type="number" min="1" max="365" value="${dn}" oninput="S.fd=this.value;render()"/></div><div class="fg"><label class="fl">Start no earlier than</label><input class="fi" type="date" value="${sa}" onchange="S.fa=this.value;render()"/></div></div></div><div><div class="slbl" style="margin-bottom:7px">Available windows</div><div style="display:flex;flex-direction:column;gap:7px">${sh}</div></div></div>`;
 }
 
 function rPlan(){
@@ -372,73 +353,80 @@ function rPlan(){
   let np=S.plan,dl=np.dl,comp=dl?cback(np.phases,dl):[],total=np.phases.reduce((s,ph)=>s+(parseInt(ph.defaultDays)||5),0),sd=comp[0]&&comp[0].start||'',past=sd&&sd<td();
   let cO=PCOLS.map(c=>`<div class="copt${np.color===c?' sel':''}" style="background:${c}" onclick="S.plan.color='${c}';render()"></div>`).join('');
   let rows=np.phases.map((ph,i)=>{let c=pc(ph.name,i),cm=comp[i];return`<div class="plr"><span class="plsw" style="background:${c.bg};border:1px solid ${c.t}40"></span><span style="flex:1;min-width:70px"><input value="${esc(ph.name)}" oninput="S.plan.phases[${i}].name=this.value;render()" style="border:none;background:transparent;font-size:12px;color:var(--tx1);font-family:var(--ff);width:100%;outline:none"/></span><div style="display:flex;align-items:center;gap:4px;font-size:12px;color:var(--tx2)"><input class="durin" type="number" min="1" max="90" value="${ph.defaultDays||5}" oninput="S.plan.phases[${i}].defaultDays=parseInt(this.value)||1;render()"/><span>d</span></div><span class="pld${cm?' set':''}">${cm?`${fmtD(cm.start)} &rarr; ${fmtD(cm.end)}`:'&mdash;'}</span><button class="delbtn rdel2" onclick="S.plan.phases.splice(${i},1);render()">&#215;</button></div>`;}).join('');
-  let act=dl?`<div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap">${past?`<span class="wrn">&#9888; Starts in the past (${fmtD(sd)})</span>`:`<span class="suc">&#10003; Starts ${fmtD(sd)} &mdash; ${total} days total</span>`}<button class="btn btn-p btn-s" onclick="applyPlan()">Add to dashboard &rarr;</button></div>`:'';
-  return`<div class="plv"><div class="plc"><div class="slbl">Deadline planner</div><div style="display:flex;align-items:flex-end;gap:9px;flex-wrap:wrap"><div class="fg" style="flex:2;min-width:140px"><label class="fl">Project name</label><input class="fi" value="${esc(np.name)}" oninput="S.plan.name=this.value"/></div><div class="fg"><label class="fl">Final deadline</label><input class="fi" type="date" value="${dl}" onchange="S.plan.dl=this.value;render()"/></div><div class="fg"><label class="fl">Color</label><div class="cpr">${cO}</div></div></div><div style="border-top:.5px solid var(--bd3);padding-top:9px"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px"><span style="font-size:11px;color:var(--tx2)">Phase &middot; Duration &middot; Dates (backwards from deadline)</span><button class="apbtn" onclick="S.plan.phases.push({name:'New phase',defaultDays:5});render()">+ Phase</button></div>${rows}</div>${act?`<div class="divider" style="margin-top:4px"></div>${act}`:''}</div><p style="font-size:12px;color:var(--tx2);line-height:1.6">Set a deadline and phases fill backwards. Adjust durations and dates recalculate instantly. Click <strong style="font-weight:500">Add to dashboard</strong> to push to the Gantt.</p></div>`;
+  let act=dl?`<div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap">${past?`<span class="wrn">&#9888; Starts in the past (${fmtD(sd)})</span>`:`<span class="suc">&#10003; Starts ${fmtD(sd)} &mdash; ${total} days total</span>`}<button class="btn btn-new btn-s" onclick="applyPlan()">Add to dashboard &rarr;</button></div>`:'';
+  return`<div class="plv"><div class="plc"><div class="slbl">Deadline planner</div><div style="display:flex;align-items:flex-end;gap:9px;flex-wrap:wrap"><div class="fg" style="flex:2;min-width:140px"><label class="fl">Project name</label><input class="fi" value="${esc(np.name)}" oninput="S.plan.name=this.value"/></div><div class="fg"><label class="fl">Final deadline</label><input class="fi" type="date" value="${dl}" onchange="S.plan.dl=this.value;render()"/></div><div class="fg"><label class="fl">Color</label><div class="cpr">${cO}</div></div></div><div style="border-top:.5px solid var(--bd3);padding-top:9px"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px"><span style="font-size:11px;color:var(--tx2)">Phase &middot; Duration &middot; Dates (backwards from deadline)</span><button class="apbtn" onclick="S.plan.phases.push({name:'New phase',defaultDays:5});render()">+ Phase</button></div>${rows}</div>${act?`<div class="divider" style="margin-top:4px"></div>${act}`:''}</div><p style="font-size:12px;color:var(--tx2);line-height:1.6">Set a deadline and phases fill backwards. Adjust durations and dates recalculate instantly.</p></div>`;
 }
 
 function rOwners(){
-  let win=ewin(),sD=new Date(win.s),eD=new Date(win.e),rng=Math.max(1,eD-sD);
-  function pct(d){if(!d)return 0;return Math.max(0,Math.min(100,(new Date(d)-sD)/rng*100));}
   let owners=[...new Set(S.projects.map(p=>p.owner).filter(Boolean))].sort();
   if(!owners.length)return`<div class="ovv"><div style="padding:40px;text-align:center;color:var(--tx2)">No owners set yet. Add owners in each project tab.</div></div>`;
-  let groups=owners.map((owner,oi)=>{
+  let rows=owners.map((owner,oi)=>{
     let bg=OBG[oi%OBG.length],tx=OTX[oi%OTX.length];
-    let projs=S.projects.filter(p=>p.owner===owner||p.phases.some(ph=>ph.owner===owner));
-    let prows=projs.map(p=>{
-      let segs=p.phases.filter(ph=>ph.start&&ph.end).map((ph,i)=>{let l=pct(ph.start),r=pct(ph.end),w=Math.max(0.3,r-l);let c=pc(ph.name,i);return`<div class="ovbs" style="left:${l}%;width:${w}%;background:${c.bg}"></div>`;}).join('');
-      return`<div class="ovpr" onclick="selP(${p.id})"><div style="width:150px;min-width:150px;font-size:12px;display:flex;align-items:center;gap:6px"><span class="pdot" style="background:${p.color}"></span>${esc(p.name)}</div><div class="ovbw">${segs}<div style="position:absolute;top:0;bottom:0;left:${pct(td())}%;width:1.5px;background:#E24B4A;z-index:2"></div></div><div style="width:90px;text-align:right;font-size:11px;color:var(--tx2)">${esc(p.rs)}</div></div>`;
-    }).join('');
-    return`<div class="ovg"><div class="ovgh"><div class="av" style="background:${bg};color:${tx}">${ini(owner)}</div><div style="font-size:13px;font-weight:500">${esc(owner)}</div><div style="font-size:11px;color:var(--tx2);margin-left:auto">${projs.length} project${projs.length!==1?'s':''}</div></div>${prows||'<div style="padding:10px 12px;font-size:12px;color:var(--tx2)">No projects.</div>'}</div>`;
+    let projs=S.projects.filter(p=>p.owner===owner&&p.status!=='Rejected');
+    let projLines=projs.map(p=>{
+      let phase=p.cp||(p.phases.find(ph=>!ph.done&&ph.start&&ph.end)||{}).name||'Not started';
+      return`<div class="ovproj" onclick="event.stopPropagation();selP(${p.id})" style="cursor:pointer"><span class="pdot" style="background:${p.color};display:inline-block;margin-right:5px"></span>${esc(p.name)} <span style="color:var(--tx2)">&middot; ${esc(phase)}</span></div>`;
+    }).join('')||'<div style="color:var(--tx2)">No active projects</div>';
+    return`<div class="ovrow">
+      <div class="av" style="background:${bg};color:${tx}">${ini(owner)}</div>
+      <div class="ovname">${esc(owner)}</div>
+      <div class="ovphase">${projLines}</div>
+    </div>`;
   }).join('');
-  return`<div class="ovv">${groups}</div>`;
+  return`<div class="ovv">${rows}</div>`;
 }
 
 function rTable(){
   let ps=S.projects;
   let f=S.tf;
-  if(f==='Active')ps=ps.filter(p=>p.ps==='Active');
-  else if(f==='Requests')ps=ps.filter(p=>p.rs==='Request'||p.rs==='Upcoming');
-  else if(f==='On Hold')ps=ps.filter(p=>p.rs==='On Hold');
-  else if(f==='Approved')ps=ps.filter(p=>p.rs==='Approved');
-  else if(f==='Complete')ps=ps.filter(p=>p.ps==='Complete');
-  if(S.ts){ps=[...ps].sort((a,b)=>{let av=a[S.ts]||'',bv=b[S.ts]||'';return av.localeCompare(bv)*S.td2;});}
-  let filters=['All','Active','Approved','Requests','On Hold','Complete'];
+  if(f==='Active')ps=ps.filter(p=>p.status==='Active');
+  else if(f==='Requests')ps=ps.filter(p=>p.status==='Request'||p.status==='Upcoming');
+  else if(f==='On Hold')ps=ps.filter(p=>p.status==='On Hold');
+  else if(f==='Approved')ps=ps.filter(p=>p.status==='Approved');
+  else if(f==='Completed')ps=ps.filter(p=>p.status==='Completed');
+  if(S.ts){
+    ps=[...ps].sort((a,b)=>{
+      let aHold=a.status==='On Hold'?1:0,bHold=b.status==='On Hold'?1:0;
+      if(aHold!==bHold)return aHold-bHold;
+      let av=a[S.ts]||'',bv=b[S.ts]||'';
+      return av.localeCompare(bv)*S.td2;
+    });
+  } else {
+    ps=[...ps].sort((a,b)=>{let aHold=a.status==='On Hold'?1:0,bHold=b.status==='On Hold'?1:0;return aHold-bHold;});
+  }
+  let filters=['All','Active','Approved','Requests','On Hold','Completed'];
   function arrow(col){return`<span style="margin-left:4px;opacity:${S.ts===col?1:.35};font-size:10px">${S.ts===col?(S.td2===1?'&#9650;':'&#9660;'):'&#9650;'}</span>`;}
-  function thS(col){return S.ts===col?'color:var(--tx1)':'';}
-  function phB(ph){if(!ph)return'';let c=pc(ph,0);return`<span class="badge" style="background:${c.bg};color:${c.t}">${esc(ph)}</span>`;}
-  let rm={Request:'b-req',Approved:'b-app',Rejected:'b-rej','On Hold':'b-hld',Upcoming:'b-upc'};
   let rows=ps.map(p=>{
-    let rc=p.rs==='On Hold'?'rhld':p.rs==='Rejected'?'rrej':(p.rs==='Request'||p.rs==='Upcoming')?'rreq':'';
+    let rc=p.status==='On Hold'?'rhld':p.status==='Rejected'?'rrej':(p.status==='Request'||p.status==='Upcoming')?'rreq':'';
     let se=pse(p);
     return`<tr class="${rc}">
-      <td style="width:22%"><div style="display:flex;align-items:center;gap:6px"><span class="pdot" style="background:${p.color};cursor:pointer" onclick="selP(${p.id})" title="Open project"></span><input class="cel" value="${esc(p.name)}" oninput="upd(${p.id},'name',this.value)" style="font-weight:500"/></div></td>
-      <td style="width:15%"><input class="cel" value="${esc(p.notes)}" oninput="upd(${p.id},'notes',this.value)" placeholder="Notes&hellip;"/>${p.hn&&p.rs==='On Hold'?`<div style="font-size:11px;color:var(--tx2);margin-top:2px">${esc(p.hn)}</div>`:''}</td>
-      <td style="width:13%"><div class="bdc"><span class="badge ${rm[p.rs]||'b-req'}" style="cursor:pointer" onclick="cycR(${p.id})" title="Click to cycle">${esc(p.rs)}</span>${p.cp?phB(p.cp):''}</div></td>
-      <td style="width:8%"><select class="cels" onchange="upd(${p.id},'ps',this.value)">${PST.map(s=>`<option${p.ps===s?' selected':''}>${s}</option>`).join('')}</select></td>
-      <td style="width:9%"><input class="cel" value="${esc(se.s||p.startDate||'')}" oninput="upd(${p.id},'startDate',this.value)" placeholder="TBD"/></td>
-      <td style="width:9%"><input class="cel" value="${esc(se.e||p.endDate||'')}" oninput="upd(${p.id},'endDate',this.value)" placeholder="TBD"/></td>
+      <td style="width:20%"><div style="display:flex;align-items:center;gap:6px"><span class="pdot" style="background:${p.color};cursor:pointer" onclick="selP(${p.id})" title="Open project"></span><input class="cel" value="${esc(p.name)}" oninput="upd(${p.id},'name',this.value)" style="font-weight:500"/></div></td>
+      <td style="width:15%"><input class="cel" value="${esc(p.notes)}" oninput="upd(${p.id},'notes',this.value)" placeholder="Notes&hellip;"/>${p.hn&&p.status==='On Hold'?`<div style="font-size:11px;color:var(--tx2);margin-top:2px">${esc(p.hn)}</div>`:''}</td>
+      <td style="width:12%"><select class="cels" onchange="upd(${p.id},'status',this.value)" onclick="event.stopPropagation()">${STS.map(s=>`<option${p.status===s?' selected':''}>${s}</option>`).join('')}</select></td>
+      <td style="width:10%"><select class="cels" onchange="upd(${p.id},'cp',this.value)"><option value="">&#8212;</option>${[...new Set([...DPHASES,...p.phases.map(ph=>ph.name)])].map(s=>`<option${p.cp===s?' selected':''}>${s}</option>`).join('')}</select></td>
+      <td style="width:9%"><input class="cel" value="${esc(se.s||'')}" oninput="upd(${p.id},'startDate',this.value)" placeholder="TBD"/></td>
+      <td style="width:9%"><input class="cel" value="${esc(se.e||'')}" oninput="upd(${p.id},'endDate',this.value)" placeholder="TBD"/></td>
       <td style="width:10%"><input class="cel" value="${esc(p.owner||'')}" oninput="upd(${p.id},'owner',this.value)" placeholder="Lead&hellip;"/></td>
-      <td style="width:12%;font-size:11px"><input class="cel" value="${esc(p.stk||'')}" oninput="upd(${p.id},'stk',this.value)" placeholder="Stakeholders&hellip;" style="font-size:11px"/></td>
+      <td style="width:13%;font-size:11px"><input class="cel" value="${esc(p.stk||'')}" oninput="upd(${p.id},'stk',this.value)" placeholder="Stakeholders&hellip;" style="font-size:11px"/></td>
       <td style="width:2%;text-align:center"><button class="rdel" onclick="delP(${p.id})" title="Remove">&#215;</button></td>
     </tr>`;
   }).join('');
   return`<div class="tv">
-    <div class="tvhdr"><h2>Project projections</h2><p>Last updated: ${esc(S.lu)}</p></div>
+    <div class="tvhdr"><h2>Project list</h2><p>Last updated: ${esc(S.lastUpdated)} &middot; editable inline</p></div>
     <div class="tvf">
       <span style="font-size:11px;color:var(--tx2)">Filter:</span>
       ${filters.map(f2=>`<button class="fb${S.tf===f2?' on':''}" onclick="S.tf='${f2}';render()">${f2}</button>`).join('')}
-      <span style="margin-left:auto;font-size:11px;color:var(--tx2);cursor:pointer" onclick="stampD()" title="Stamp today">&#8635; Update date</span>
     </div>
     <div class="tvs">
       <table class="tvt">
         <thead><tr>
-          <th onclick="tsort('name')" style="${thS('name')}">Project ${arrow('name')}</th>
+          <th onclick="tsort('name')">Project ${arrow('name')}</th>
           <th>Notes</th>
-          <th onclick="tsort('rs')" style="${thS('rs')}">Status ${arrow('rs')}</th>
-          <th onclick="tsort('ps')" style="${thS('ps')}">Progress ${arrow('ps')}</th>
-          <th onclick="tsort('startDate')" style="${thS('startDate')}">Start ${arrow('startDate')}</th>
-          <th onclick="tsort('endDate')" style="${thS('endDate')}">End ${arrow('endDate')}</th>
-          <th onclick="tsort('owner')" style="${thS('owner')}">Project lead ${arrow('owner')}</th>
+          <th onclick="tsort('status')">Status ${arrow('status')}</th>
+          <th>Phase</th>
+          <th onclick="tsort('startDate')">Start ${arrow('startDate')}</th>
+          <th onclick="tsort('endDate')">End ${arrow('endDate')}</th>
+          <th onclick="tsort('owner')">Project lead ${arrow('owner')}</th>
           <th>Stakeholder(s)</th>
           <th></th>
         </tr></thead>
@@ -446,7 +434,7 @@ function rTable(){
       </table>
     </div>
     <div class="tvadd" onclick="showNew()">+ Add project</div>
-    <div class="tvft"><span>${ps.length} project${ps.length!==1?'s':''} shown</span><button class="btn btn-s" onclick="expAll()">&#8595; Export CSV</button></div>
+    <div class="tvft"><span>${ps.length} project${ps.length!==1?'s':''} shown &middot; On Hold sorts to the bottom</span><button class="btn btn-s" onclick="expAll()">&#8595; Export CSV</button></div>
   </div>`;
 }
 
@@ -461,9 +449,8 @@ function rProj(pid){
     let c=pc(ph.name,i),d=ph.start&&ph.end?dur(ph.start,ph.end)+'d':'',rc=ph.done?'phd':i===actPh?'pha':'';
     return`<tr class="${rc}"><td style="width:4%"><input type="checkbox" ${ph.done?'checked':''} onchange="togDone(${p.id},${i},this.checked)" style="cursor:pointer;accent-color:#1D9E75"/></td><td style="width:25%"><div style="display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:2px;background:${c.bg};border:1px solid ${c.t}40;flex-shrink:0;display:inline-block"></span><input value="${esc(ph.name)}" oninput="upPhn(${p.id},${i},this.value)" style="border:none;background:transparent;font-size:12px;color:var(--tx1);font-family:var(--ff);width:100%;outline:none${ph.done?';text-decoration:line-through':''}"/></div></td><td style="width:18%"><input class="dtin" type="date" value="${ph.start||''}" onchange="upPhd(${p.id},${i},'start',this.value)"/></td><td style="width:18%"><input class="dtin" type="date" value="${ph.end||''}" onchange="upPhd(${p.id},${i},'end',this.value)"/></td><td style="width:18%"><input class="txin" value="${esc(ph.owner||'')}" oninput="upPho(${p.id},${i},this.value)" placeholder="Owner"/></td><td style="width:9%;color:var(--tx2);font-size:11px">${d}</td><td style="width:4%"><button class="delbtn rdel2" onclick="delPh(${p.id},${i})">&#215;</button></td></tr>`;
   }).join('');
-  let rm={Request:'b-req',Approved:'b-app',Rejected:'b-rej','On Hold':'b-hld',Upcoming:'b-upc'};
-  let pm={Planned:'b-pln',Active:'b-act',Complete:'b-cmp'};
-  let hcard=(p.rs==='On Hold'||p.rs==='Rejected')?`<div class="hcard${p.rs==='Rejected'?' rej':''}"><div style="font-size:12px;font-weight:500;color:${p.rs==='Rejected'?'#791F1F':'#444441'}">${p.rs==='On Hold'?'On hold':'Rejected'}</div><textarea class="notes-ta" oninput="upd(${p.id},'hn',this.value)" placeholder="${p.rs==='On Hold'?'Why on hold? When might it begin?':'Reason for rejection&hellip;'}" style="min-height:44px">${esc(p.hn||'')}</textarea></div>`:'';
+  let sm={Request:'b-req',Approved:'b-app',Rejected:'b-rej','On Hold':'b-hld',Upcoming:'b-upc',Active:'b-act',Completed:'b-cmp'};
+  let hcard=(p.status==='On Hold'||p.status==='Rejected')?`<div class="hcard${p.status==='Rejected'?' rej':''}"><div style="font-size:12px;font-weight:500;color:${p.status==='Rejected'?'#791F1F':'#444441'}">${p.status==='On Hold'?'On hold':'Rejected'}</div><textarea class="notes-ta" oninput="upd(${p.id},'hn',this.value)" placeholder="${p.status==='On Hold'?'Why on hold? When might it begin?':'Reason for rejection&hellip;'}" style="min-height:44px">${esc(p.hn||'')}</textarea></div>`:'';
   let allPh=[...new Set([...DPHASES,...p.phases.map(ph=>ph.name)])];
   return`<div class="pv">
     <div style="display:flex;align-items:flex-start;gap:9px">
@@ -473,13 +460,11 @@ function rProj(pid){
         <div style="display:flex;gap:7px;align-items:flex-end;flex-wrap:wrap">
           <div class="fg"><label class="fl">Project owner</label><input class="fi" style="width:140px" value="${esc(p.owner||'')}" oninput="upd(${p.id},'owner',this.value)" placeholder="Owner"/></div>
           <div class="fg"><label class="fl">Stakeholders</label><input class="fi" style="width:200px" value="${esc(p.stk||'')}" oninput="upd(${p.id},'stk',this.value)" placeholder="Stakeholders&hellip;"/></div>
-          <div class="fg"><label class="fl">Request status</label><select class="sel-in" onchange="upd(${p.id},'rs',this.value);render()">${RST.map(s=>`<option${p.rs===s?' selected':''}>${s}</option>`).join('')}</select></div>
-          <div class="fg"><label class="fl">Progress</label><select class="sel-in" onchange="upd(${p.id},'ps',this.value);render()">${PST.map(s=>`<option${p.ps===s?' selected':''}>${s}</option>`).join('')}</select></div>
+          <div class="fg"><label class="fl">Status</label><select class="sel-in" onchange="upd(${p.id},'status',this.value);render()">${STS.map(s=>`<option${p.status===s?' selected':''}>${s}</option>`).join('')}</select></div>
           <div class="fg"><label class="fl">Current phase</label><select class="sel-in" onchange="upd(${p.id},'cp',this.value);render()"><option value="">&#8212;</option>${allPh.map(s=>`<option${p.cp===s?' selected':''}>${s}</option>`).join('')}</select></div>
         </div>
         <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
-          <span class="badge ${rm[p.rs]||'b-req'}">${esc(p.rs)}</span>
-          <span class="badge ${pm[p.ps]||'b-pln'}">${esc(p.ps)}</span>
+          <span class="badge ${sm[p.status]||'b-req'}">${esc(p.status)}</span>
           ${se.s?`<span style="font-size:11px;color:var(--tx2)">${fmtD(se.s)} &rarr; ${fmtD(se.e)} &middot; ${totD}d total &middot; ${doneC}/${p.phases.length} phases done</span>`:''}
         </div>
       </div>
@@ -511,9 +496,6 @@ function render(){
   else if(v==='planner')main=rPlan();
   else if(v==='owners')main=rOwners();
   else if(v==='project')main=rProj(S.ap);
-
-  let ptabs=S.projects.map(p=>`<div class="tab${v==='project'&&S.ap===p.id?' on':''}" onclick="selP(${p.id})"><span class="tab-dot" style="background:${p.color}"></span>${esc(p.name)||'Unnamed'}</div>`).join('');
-
   let modal='';
   if(S.showNew){
     let np=S.newProj||{};
@@ -524,88 +506,61 @@ function render(){
         <div class="fg"><label class="fl">Project name</label><input class="fi" placeholder="Project name" value="${esc(np.name||'')}" oninput="S.newProj.name=this.value"/></div>
         <div class="fg"><label class="fl">Project owner</label><input class="fi" placeholder="Owner" value="${esc(np.owner||'')}" oninput="S.newProj.owner=this.value"/></div>
         <div class="fg"><label class="fl">Stakeholders</label><input class="fi" placeholder="Stakeholders&hellip;" value="${esc(np.stk||'')}" oninput="S.newProj.stk=this.value"/></div>
-        <div class="fg"><label class="fl">Request status</label><select class="fi" onchange="S.newProj.rs=this.value">${RST.map(s=>`<option${(np.rs||'Request')===s?' selected':''}>${s}</option>`).join('')}</select></div>
+        <div class="fg"><label class="fl">Status</label><select class="fi" onchange="S.newProj.status=this.value">${STS.map(s=>`<option${(np.status||'Request')===s?' selected':''}>${s}</option>`).join('')}</select></div>
         <div class="fg"><label class="fl">Color</label><div class="cpr">${cO}</div></div>
-        <div class="mact"><button class="btn" onclick="S.showNew=false;render()">Cancel</button><button class="btn btn-p" onclick="createP()">Create project</button></div>
+        <div class="mact"><button class="btn" onclick="S.showNew=false;render()">Cancel</button><button class="btn btn-new" onclick="createP()">Create project</button></div>
       </div>
     </div>`;
   }
-
+  let ptabs=S.projects.map(p=>`<div class="ptab${v==='project'&&S.ap===p.id?' on':''}" onclick="selP(${p.id})" style="display:flex;align-items:center;gap:5px"><span style="width:7px;height:7px;border-radius:50%;background:${p.color};flex-shrink:0"></span>${esc(p.name)||'Unnamed'}</div>`).join('');
+  let logoHTML=LOGO_URL?`<img src="${LOGO_URL}" alt="Usability Lab logo"/>`:'UL';
   document.getElementById('app').innerHTML=`
     <div class="topbar">
-      <div style="display:flex;align-items:center;gap:8px"><span class="ttl">&#128202; Project Dashboard</span></div>
+      <div class="brand">
+        <div class="logo">${logoHTML}</div>
+        <span class="ttl">Project Dashboard</span>
+      </div>
       <div class="tr">
-        <div style="display:flex;gap:2px">
-          <button class="btn${v==='gantt'?' on':''}" onclick="setV('gantt')">Gantt</button>
-          <button class="btn${v==='table'?' on':''}" onclick="setV('table')">Table</button>
-          <button class="btn${v==='capacity'?' on':''}" onclick="setV('capacity')">Capacity</button>
-          <button class="btn${v==='fit'?' on':''}" onclick="setV('fit')">Fit finder</button>
-          <button class="btn${v==='planner'?' on':''}" onclick="setV('planner')">Planner</button>
-          <button class="btn${v==='owners'?' on':''}" onclick="setV('owners')">By owner</button>
-        </div>
-        <div style="display:flex;gap:2px">
-          <button class="btn${S.rng==='weekly'?' on':''}" onclick="setR('weekly')">Week</button>
-          <button class="btn${S.rng==='monthly'?' on':''}" onclick="setR('monthly')">Month</button>
-          <button class="btn${S.rng==='quarterly'?' on':''}" onclick="setR('quarterly')">Quarter</button>
-        </div>
-        <button class="btn" onclick="expAll()">&#8595; Export</button>
-        <button class="btn btn-p" onclick="showNew()">+ New project</button>
+        ${(v==='gantt'||v==='capacity')?`<div style="display:flex;gap:2px"><button class="btn${S.range==='weekly'?' on':''}" onclick="setR('weekly')">Week</button><button class="btn${S.range==='monthly'?' on':''}" onclick="setR('monthly')">Month</button><button class="btn${S.range==='quarterly'?' on':''}" onclick="setR('quarterly')">Quarter</button></div>`:''}
+        <button class="btn" onclick="expAll()">Export</button>
+        <button class="btn btn-new" onclick="showNew()">+ New project</button>
         <a href="${GS}" class="gs-link" target="_blank" rel="noopener">Sheet &#8599;</a>
       </div>
     </div>
-    <div class="tab-bar">
-      <div class="tab${v==='gantt'?' on':''}" onclick="setV('gantt')">Gantt</div>
-      <div class="tab${v==='table'?' on':''}" onclick="setV('table')">Table</div>
-      <div class="tab${v==='capacity'?' on':''}" onclick="setV('capacity')">Capacity</div>
-      <div class="tab${v==='fit'?' on':''}" onclick="setV('fit')">Fit finder</div>
-      <div class="tab${v==='planner'?' on':''}" onclick="setV('planner')">Planner</div>
-      <div class="tab${v==='owners'?' on':''}" onclick="setV('owners')">By owner</div>
-      <div class="tsep"></div>
-      ${ptabs}
-      <div class="tadd" onclick="showNew()" title="New project">+</div>
+    <div class="section-nav">
+      <div class="stab${v==='table'?' on':''}" onclick="setV('table')">Project list</div>
+      <div class="stab${v==='gantt'?' on':''}" onclick="setV('gantt')">Gantt</div>
+      <div class="stab${v==='capacity'?' on':''}" onclick="setV('capacity')">Team capacity</div>
+      <div class="stab${v==='fit'?' on':''}" onclick="setV('fit')">Find availability</div>
+      <div class="stab${v==='planner'?' on':''}" onclick="setV('planner')">Planner</div>
+      <div class="stab${v==='owners'?' on':''}" onclick="setV('owners')">By owner</div>
     </div>
+    ${ptabs?`<div class="proj-tab-row">${ptabs}</div>`:''}
     <div class="content">${modal||main}</div>
   `;
 }
-
 function setV(v){S.view=v;render();}
-function setR(r){S.rng=r;render();}
+function setR(r){S.range=r;render();}
 function selP(id){S.ap=id;S.view='project';S.cpk=null;render();}
-function showNew(){S.showNew=true;S.newProj={name:'',owner:'',stk:'',rs:'Request',color:PCOLS[S.projects.length%PCOLS.length]};render();}
+function showNew(){S.showNew=true;S.newProj={name:'',owner:'',stk:'',status:'Request',color:PCOLS[S.projects.length%PCOLS.length]};render();}
 function togCpk(id){S.cpk=S.cpk===id?null:id;render();}
 function setCol(id,c){let p=S.projects.find(x=>x.id===id);if(p){p.color=c;S.cpk=null;render();save();}}
-function upd(id,f,v){let p=S.projects.find(x=>x.id===id);if(p){p[f]=v;if(['rs','ps','cp'].includes(f))render();save();}}
-function cycR(id){let p=S.projects.find(x=>x.id===id);if(!p)return;let i=RST.indexOf(p.rs);p.rs=RST[(i+1)%RST.length];render();save();}
+function upd(id,f,v){let p=S.projects.find(x=>x.id===id);if(p){p[f]=v;if(['status','cp'].includes(f))render();save();}}
 function togDone(pid,idx,v){let p=S.projects.find(x=>x.id===pid);if(p&&p.phases[idx]){p.phases[idx].done=v;render();save();}}
 function upPhn(pid,idx,v){let p=S.projects.find(x=>x.id===pid);if(p&&p.phases[idx]){p.phases[idx].name=v;save();}}
 function upPhd(pid,idx,f,v){let p=S.projects.find(x=>x.id===pid);if(p&&p.phases[idx]){p.phases[idx][f]=v;render();save();}}
 function upPho(pid,idx,v){let p=S.projects.find(x=>x.id===pid);if(p&&p.phases[idx]){p.phases[idx].owner=v;save();}}
 function addPh(pid){let p=S.projects.find(x=>x.id===pid);if(p){p.phases.push({name:'New phase',start:'',end:'',done:false,owner:''});render();save();}}
 function delPh(pid,idx){let p=S.projects.find(x=>x.id===pid);if(p){p.phases.splice(idx,1);render();save();}}
-function delP(id){if(!confirm('Delete this project?'))return;S.projects=S.projects.filter(p=>p.id!==id);S.ap=null;S.view='gantt';render();save();}
-function createP(){
-  let np=S.newProj,name=(np.name||'').trim()||'New Project',id=Date.now();
-  S.projects.push({id,name,rs:np.rs||'Request',ps:'Planned',color:np.color||PCOLS[0],owner:np.owner||'',stk:np.stk||'',notes:'',hn:'',cp:'',startDate:'',endDate:'',phases:DPHASES.map(n=>({name:n,start:'',end:'',done:false,owner:np.owner||''}))});
-  S.showNew=false;S.ap=id;S.view='project';render();save();
-}
-function applyPlan(){
-  let np=S.plan;if(!np||!np.dl)return;
-  let comp=cback(np.phases,np.dl),id=Date.now();
-  S.projects.push({id,name:np.name||'New Project',rs:'Request',ps:'Planned',color:np.color||PCOLS[0],owner:'',stk:'',notes:'',hn:'',cp:'',startDate:'',endDate:'',phases:comp.map(ph=>({name:ph.name,start:ph.start,end:ph.end,done:false,owner:''}))});
-  S.plan=null;S.ap=id;S.view='project';render();save();
-}
-function openPlan(pid){
-  let p=S.projects.find(x=>x.id===pid);if(!p)return;
-  S.plan={dl:'',name:p.name,color:p.color,phases:p.phases.map(ph=>({name:ph.name,defaultDays:ph.start&&ph.end?dur(ph.start,ph.end):(DDUR[ph.name]||5)}))};
-  S.view='planner';render();
-}
+function delP(id){if(!confirm('Delete this project?'))return;S.projects=S.projects.filter(p=>p.id!==id);S.ap=null;S.view='table';render();save();}
+function createP(){let np=S.newProj,name=(np.name||'').trim()||'New Project',id=Date.now();S.projects.push({id,name,status:np.status||'Request',color:np.color||PCOLS[0],owner:np.owner||'',stk:np.stk||'',notes:'',hn:'',cp:'',phases:DPHASES.map(n=>({name:n,start:'',end:'',done:false,owner:np.owner||''}))});S.showNew=false;S.ap=id;S.view='project';render();save();}
+function applyPlan(){let np=S.plan;if(!np||!np.dl)return;let comp=cback(np.phases,np.dl),id=Date.now();S.projects.push({id,name:np.name||'New Project',status:'Request',color:np.color||PCOLS[0],owner:'',stk:'',notes:'',hn:'',cp:'',phases:comp.map(ph=>({name:ph.name,start:ph.start,end:ph.end,done:false,owner:''}))});S.plan=null;S.ap=id;S.view='project';render();save();}
+function openPlan(pid){let p=S.projects.find(x=>x.id===pid);if(!p)return;S.plan={dl:'',name:p.name,color:p.color,phases:p.phases.map(ph=>({name:ph.name,defaultDays:ph.start&&ph.end?dur(ph.start,ph.end):(DDUR[ph.name]||5)}))};S.view='planner';render();}
 function tsort(col){if(S.ts===col)S.td2*=-1;else{S.ts=col;S.td2=1;}render();}
-function stampD(){S.lu=tdf();render();save();}
 function toCSV(rows){return rows.map(r=>r.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');}
 function dlCSV(csv,fn){let b=new Blob([csv],{type:'text/csv'});let a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=fn;document.body.appendChild(a);a.click();document.body.removeChild(a);}
-function expOne(pid){let p=S.projects.find(x=>x.id===pid);if(!p)return;let rows=[['Project','Owner','Stakeholders','Req Status','Progress','Current Phase','Phase','Phase Owner','Start','End','Duration (days)','Done','Notes','Hold Note']];p.phases.forEach(ph=>{rows.push([p.name,p.owner||'',p.stk||'',p.rs,p.ps,p.cp||'',ph.name,ph.owner||'',ph.start||'',ph.end||'',ph.start&&ph.end?dur(ph.start,ph.end):'',ph.done?'Yes':'No',p.notes||'',p.hn||'']);});dlCSV(toCSV(rows),`${p.name.replace(/[^a-z0-9]/gi,'_')}.csv`);}
-function expAll(){let rows=[['Project','Owner','Stakeholders','Req Status','Progress','Current Phase','Phase','Phase Owner','Start','End','Duration (days)','Done','Notes','Hold Note']];S.projects.forEach(p=>{p.phases.forEach(ph=>{rows.push([p.name,p.owner||'',p.stk||'',p.rs,p.ps,p.cp||'',ph.name,ph.owner||'',ph.start||'',ph.end||'',ph.start&&ph.end?dur(ph.start,ph.end):'',ph.done?'Yes':'No',p.notes||'',p.hn||'']);});});dlCSV(toCSV(rows),'all_projects.csv');}
-
+function expOne(pid){let p=S.projects.find(x=>x.id===pid);if(!p)return;let rows=[['Project','Owner','Stakeholders','Status','Current Phase','Phase','Phase Owner','Start','End','Duration (days)','Done','Notes','Hold Note']];p.phases.forEach(ph=>{rows.push([p.name,p.owner||'',p.stk||'',p.status,p.cp||'',ph.name,ph.owner||'',ph.start||'',ph.end||'',ph.start&&ph.end?dur(ph.start,ph.end):'',ph.done?'Yes':'No',p.notes||'',p.hn||'']);});dlCSV(toCSV(rows),`${p.name.replace(/[^a-z0-9]/gi,'_')}.csv`);}
+function expAll(){let rows=[['Project','Owner','Stakeholders','Status','Current Phase','Phase','Phase Owner','Start','End','Duration (days)','Done','Notes','Hold Note']];S.projects.forEach(p=>{p.phases.forEach(ph=>{rows.push([p.name,p.owner||'',p.stk||'',p.status,p.cp||'',ph.name,ph.owner||'',ph.start||'',ph.end||'',ph.start&&ph.end?dur(ph.start,ph.end):'',ph.done?'Yes':'No',p.notes||'',p.hn||'']);});});dlCSV(toCSV(rows),'all_projects.csv');}
 render();
 </script>
 </body>
